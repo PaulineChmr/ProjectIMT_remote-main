@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Customer2" representedClassName=".Customer2" syncable="YES">
+        <attribute name="birthday_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="first_name" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="last_name" optional="YES" attributeType="String"/>
+        <attribute name="number_of_transformations" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="transformation_list" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transformation2" inverseName="customer" inverseEntity="Transformation2"/>
+    </entity>
+    <entity name="Transformation2" representedClassName=".Transformation2" syncable="YES">
+        <attribute name="after_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="after_picture" optional="YES" attributeType="String"/>
+        <attribute name="before_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="before_picture" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer2" inverseName="transformation_list" inverseEntity="Customer2"/>
+    </entity>
+</model>
