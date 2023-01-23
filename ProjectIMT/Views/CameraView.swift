@@ -8,6 +8,8 @@
 import SwiftUI
 import AVFoundation
 import CoreData
+import UIKit
+import Foundation
 
 struct CameraView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -94,9 +96,6 @@ struct CameraViewWithModel: View {
                     if camera.isTaken {
                         
                         Button(action: {
-                            //La version de savePic sans argument correspond à la tentative de copier la méthode editPatient - telle qu'elle existe dans EditCustomerSheet - dans la struct CameraModel. Ca ne fonctionne pas car ça retourne uen erreur sur la fonction saveContext
-                            //camera.savePic()
-                            //camera.savePic(transformation2: transformation2, customer2: customer2)
                             self.savePic()
                             presentationMode.wrappedValue.dismiss()
                         }, label: {
@@ -127,7 +126,6 @@ struct CameraViewWithModel: View {
                                     .frame(width: 75, height: 75)
                             }
                         })
-                        
                     }
                 }.frame(height: 75)
             }
@@ -138,25 +136,25 @@ struct CameraViewWithModel: View {
         
     }
     
-    //tentative de créer la fonction dans CameraViewWithModel. Problème : le captured_image est nil. Cette méthode semblait donc fonctionner, il reste à voir pourquoi captured_image a toujours la valeur nil
+    //J'ai mis en commentaire les fonctions permettant d'enregistrer la photo dans les documents/la galerie
     func savePic() {
+        let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
+        let imageSaver = ImageSaver()
+        
         if transformation2.before_picture != "" {
             transformation2.after_picture=captured_image?.toPngString()
             transformation2.after_date = Date()
+            //manager.saveimage(image: captured_image!, name: "after")
         }
         else {
             transformation2.before_picture=captured_image?.toPngString()
-            transformation2.after_date = Date()
+            transformation2.before_date = Date()
+            //manager.saveimage(image: captured_image!, name: "before")
         }
         saveContext()
-        /*if captured_image != nil
-            {print("transformation2.before_picture")}
-        else
-            {print("Y A R")}*/
-        print(transformation2.before_picture)
+        imageSaver.writeToPhotoAlbum(image: captured_image!)
     }
-    
-    
+        
     func saveContext(){
         do {
             try viewContext.save()
@@ -165,7 +163,13 @@ struct CameraViewWithModel: View {
             fatalError("Unresolved Error: \(error)")
         }
     }
+    
+    /*func buttonPosition() {
+        let position = CGPoint(x: 100, y: 50)
+    }*/
 }
+
+
 
 // Camera Model ...
 
@@ -188,6 +192,8 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Binding var captured_image: UIImage?
     @Binding var date: Date?
     var transformation2 : Transformation2
+    
+    
     
     init(captured_image: Binding<UIImage?>, date: Binding<Date?>, transformation2: Transformation2) {
         self._captured_image = captured_image
@@ -316,76 +322,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         self.session.stopRunning()
     }
     
-    /*
-    func savePic(transformation2: Transformation2, customer2: Customer2) {
-        //Il y a plusieurs possibilités ici, elles sont toutes dispo dans les notes de l'ordi. 
-        
-        // transfos renvoie la liste des transformations du customer directement à partir de Core Data
-        var transfos = fetch_trans(customer2:)
-        //var transfos = fetch()
-                
-        //met une erreur au niveau du ForEach : c'est trop long...
-        ForEach(transfos, id: \.self) { transf2 in
-            if transf2.id == transformation2.id {
-                        
-                if transf2.before_picture != "" {
-                    transf2.after_picture = captured_image?.toPngString()
-                    transf2.after_date = Date()
-                    saveContext()
-                }
-                else{
-                    transf2.before_picture = captured_image?.toPngString()
-                    transf2.before_date = Date()
-                    saveContext()
-                }
-            }
-        }
-
-        
-        //Celle-ci pose problème car le ForEach nécessite de retourner une View. Ca renvoie également une erreur si on laisse le deuxième if : il dit que ya trop de tests je crois
-        //for i in 0...(transformationArray.count - 1){
-        /*ForEach(customer2.transformationArray, id: \.self) { transf2 in
-            if transf2.id == transformation2.id {
-                //let image = UIImage(data: self.picData)!
-                if transf2.before_picture != "" {
-                 
-                 transf2.after_picture = captured_image?.toPngString()
-                 transf2.after_date = Date()
-                 saveContext()
-                 }
-                 else{
-                 transf2.before_picture = captured_image?.toPngString()
-                 transf2.before_date = Date()
-                 saveContext()
-                 }
-            }
-        }
-        */
-      
-        
-        //saving image ...
-        //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        //self.date = Date()
-        //print("saved successfully")
-    }
     
-    //Récupère les transformations du customer en question à partir de Core Data sous forme de liste
-        func fetch_trans(customer2: Customer2) -> [Transformation2] {
-            let request: NSFetchRequest<Transformation2> = Transformation2.fetchRequest()
-            
-            //exprime sur quelle condition on veut extraire les transformations : ici c'est que le customer associé à la liste de transformation soit égal à l'objet customer
-            request.predicate = NSPredicate(format: "customer = %@", customer2)
-            
-            var fetched: [Transformation2] = []
-            
-            do {
-                fetched = try viewContext.fetch(request)
-            } catch {
-                print("Error fetching transformations")
-            }
-            return fetched
-        }
-    */
     func saveContext(){
         do {
             try viewContext.save()
@@ -395,6 +332,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         }
     }
 }
+
 
 // setting view preview ...
 struct CameraPreview: UIViewRepresentable {
@@ -421,3 +359,4 @@ struct CameraPreview: UIViewRepresentable {
     }
 
 }
+

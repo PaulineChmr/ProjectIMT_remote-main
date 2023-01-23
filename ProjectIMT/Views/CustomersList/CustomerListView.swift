@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 
+
 struct CustomersListView: View {
     //@EnvironmentObject var customerData: CustomersListManager
     @Environment(\.managedObjectContext) private var viewContext
@@ -36,9 +37,6 @@ struct CustomersListView: View {
                 VStack {
                     List{
                         ForEach(customers2, id: \.self) { customer2 in
-                            //Text(customer2.first_name ?? "Untitled")
-                            //Text(customer2.last_name ?? "Untitled")
-                            
                             Text(customer2.fullName() ?? "Untitled")
                             //EditCustomer
                             Button(action: {showEditCustomerSheet = true} ) {
@@ -53,12 +51,11 @@ struct CustomersListView: View {
                                 AddTransformationSheet(showAddTransformationSheet: $showAddTransformationSheet, customer: customer2)
                             }
                             //.swipeActions(edge: .trailing){
-                            
                             //delete Customer button + confirmation alert
                             DeleteCustomerAction(customer_2: customer2)
                             
                             //edit Customer button + sheet
-                            //EditCustomerAction(customer_2: customer2)  
+                            //EditCustomerAction(customer_2: customer2)
                             
                             Section(content: {
                                 ForEach(customer2.transformationArray, id: \.self) {transformation2 in
@@ -69,7 +66,7 @@ struct CustomersListView: View {
                                     DeleteTransformation(indexSet: indexSet, customer2: customer2)
                                 }
                             })
-                          /*      //Enlever le ) avant
+                            /*    //Enlever le ) avant
                                 //Pb : toutes les modifications apportées sur un des clients sont uniquement appliquées sur le premier client de la liste (le moins récent) => travailler sur les indices des clients ?
                                 , header: {
                                 HStack {

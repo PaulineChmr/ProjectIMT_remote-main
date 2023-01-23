@@ -31,7 +31,7 @@ extension Customer2 {
     }
     
     func fullName() -> String? {
-        var fullname = first_name! + " " + last_name!
+        let fullname = first_name! + " " + last_name!
         return(fullname)
     }
 }

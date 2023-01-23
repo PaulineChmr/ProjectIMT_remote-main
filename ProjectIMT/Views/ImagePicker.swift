@@ -29,9 +29,8 @@ struct ImagePicker: View {
     
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     var customer2 : Customer2
-    
-    //Ajout du jeudi soir
     var cote: String
+    
     var body: some View {
        // let _ = print(image?.toPngString())
         //(image != nil ? Image(uiImage: image!) : Image(systemName: "photo.fill"))
@@ -42,6 +41,7 @@ struct ImagePicker: View {
         
         let imageaafficher = trouvelabonneimage(cote: cote, before_pic: before_pic, after_pic: after_pic)
         imageaafficher
+               
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 50, height: 50)
@@ -54,7 +54,7 @@ struct ImagePicker: View {
                         CameraView(captured_image: $image, date: $date, before_picture: .constant(before_picture), transformation2: $transformation2, customer2: customer2)
                     }
                     else {
-                        SUImagePickerView(image: $image, date: $date, isPresented: $shouldPresentImagePicker)
+                        SUImagePickerView(image: $image, date: $date, isPresented: $shouldPresentImagePicker, customer2: customer2, transformation2: transformation2)
                     }
             }.actionSheet(isPresented: $shouldPresentActionScheet) { () -> ActionSheet in
                 ActionSheet(title: Text("Selection Image"), buttons: [ActionSheet.Button.default(Text("Camera"), action: {
@@ -81,7 +81,20 @@ struct ImagePicker: View {
         }
     }
     
+    //Fonction de test pour afficher les photos à partir des documents de l'iPhone. Elle prend pas en compte la photo après transformation
+    func find(cote: String) -> Image {
+        let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
+        guard let im = manager.getImage(name: "before") else {
+            print("Pas d'image")
+            return Image(systemName: "photo.fill")
+        }
+        return Image(uiImage: im)
+    }
 }
+
+
+
+
 
 struct SUImagePickerView: UIViewControllerRepresentable {
     
@@ -89,9 +102,11 @@ struct SUImagePickerView: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     @Binding var date: Date?
     @Binding var isPresented: Bool
+    var customer2: Customer2
+    var transformation2: Transformation2
     
     func makeCoordinator() -> ImagePickerViewCoordinator {
-        return ImagePickerViewCoordinator(image: $image, date: $date, isPresented: $isPresented)
+        return ImagePickerViewCoordinator(image: $image, date: $date, isPresented: $isPresented, customer2: customer2, transformation2: transformation2)
     }
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
@@ -112,11 +127,15 @@ class ImagePickerViewCoordinator: NSObject, UINavigationControllerDelegate, UIIm
     @Binding var image: UIImage?
     @Binding var date: Date?
     @Binding var isPresented: Bool
+    var customer2: Customer2
+    var transformation2: Transformation2
     
-    init(image: Binding<UIImage?>, date: Binding<Date?>, isPresented: Binding<Bool>) {
+    init(image: Binding<UIImage?>, date: Binding<Date?>, isPresented: Binding<Bool>, customer2: Customer2, transformation2: Transformation2) {
         self._image = image
         self._date = date
         self._isPresented = isPresented
+        self.customer2 = customer2
+        self.transformation2 = transformation2
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -130,9 +149,9 @@ class ImagePickerViewCoordinator: NSObject, UINavigationControllerDelegate, UIIm
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.isPresented = false
     }
-    
-
 }
+
+
 
 extension String {
     func toImage() -> UIImage? {

@@ -13,9 +13,10 @@ struct TransformationItemRow: View {
     @Binding var transformation2: Transformation2
     @State var transformationSheetIsPresented: Bool = false
     @State var cantOpenTransformationAlertIsPresented: Bool = false
+    @State var showMusclesSheet: Bool = false
     var customer2 : Customer2
     
-    //Rajouté jeudi, faudra ptet l'enlever
+    //Ajout de variables pour les ImagePicker, voir s'il faut les enlever
     @State var image: UIImage?
     @State var image2: UIImage?
     
@@ -30,14 +31,18 @@ struct TransformationItemRow: View {
     
     //MARK: VIEW
     var body: some View {
+
         
         HStack {
+            
             //ImagePicker before
+            //Les deux prochaine svariables sont inutiles (?)
             let before_pic = transformation2.before_picture
             let image = before_pic!.toImage()
             ImagePicker(image: $image,
                         date: $transformation2.before_date, transformation2: $transformation2, customer2: customer2,cote: "left")
-                            .padding(.horizontal)
+            .padding(.horizontal)
+            
             VStack(spacing: 4) {
                 //transformation name
                 if let name = transformation2.name {
@@ -52,14 +57,14 @@ struct TransformationItemRow: View {
                         
                         DateIfPicturePresent(picture: transformation2.before_picture?.toImage(),
                                              date: transformation2.before_date)
-
+                        
                         Image(systemName: "arrowshape.turn.up.right.fill")
                             .foregroundColor(Color.white)
                             .font(.system(size: 15.0))
                         
                         DateIfPicturePresent(picture: transformation2.after_picture?.toImage(),
                                              date: transformation2.after_date)
-                         }
+                    }
                 }}
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -72,25 +77,23 @@ struct TransformationItemRow: View {
                 .sheet(isPresented: $transformationSheetIsPresented) {
                     ShowTransformationView(transformation2: transformation2)
                 }
-                
             }
             
             //ImagePicker after
-            
+            //les deux prochaines variables sont inutiles (?)
             let after_pic = transformation2.after_picture
             let image2 = after_pic!.toImage()
             ImagePicker(image: $image2,
-                                date: $transformation2.after_date,
+                        date: $transformation2.after_date,
                         before_picture: transformation2.before_picture?.toImage(), transformation2: $transformation2, customer2: customer2, cote: "right")
-                        .padding(.horizontal)
-                        .disabled(transformation2.before_picture == "")
-            /*let after_pic = transformation2.after_picture!.toImage()
-                        ImagePicker(image: .constant(after_pic),
-                                date: $transformation2.after_date,
-                                    before_picture: transformation2.before_picture?.toImage(), transformation2: $transformation2)
-                        .padding(.horizontal)
-                        .disabled(transformation2.before_picture == "")*/
-
+            .padding(.horizontal)
+            .disabled(transformation2.before_picture == "")
+            
+        }
+        Button(action: {showMusclesSheet = true} ) {
+            Image(systemName: "list.bullet").foregroundColor(Color.yellow)
+        } .sheet(isPresented: $showMusclesSheet) {
+            AddMusclesSheet(showMusclesSheet: $showMusclesSheet, transformation2: transformation2)
         }
     }
     
@@ -133,6 +136,10 @@ extension Date {
 }
 
 //not working
+
+
+
+
 /*
 #if DEBUG
 struct TransformationItemRow_Previews: PreviewProvider {
