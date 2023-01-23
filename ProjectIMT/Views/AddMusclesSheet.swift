@@ -60,7 +60,7 @@ struct AddMusclesSheet: View {
                 TextField(String(transformation2.corrugator_paralyse), text: $corrugator_paralyse) .padding()
                 Text("Elevator Lèvre Supérieure côté sain")
                 TextField(String(transformation2.elevator_sain), text: $elevator_sain) .padding()
-                Text("Lèvre Supérieure côté paralysé")
+                Text("Elevator Lèvre Supérieure côté paralysé")
                 TextField(String(transformation2.elevator_paralyse), text: $elevator_paralyse) .padding()
             }
             Section{

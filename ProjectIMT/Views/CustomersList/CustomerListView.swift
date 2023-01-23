@@ -72,11 +72,13 @@ struct CustomersListView: View {
                         ToolbarItem(placement: .principal) {
                             HStack {
                                 Text("Patients").font(.headline)
-                                Button(action: {showAddCustomerSheet = true} ) {
+                                Button(action: {showAddCustomerSheet = true}) {
                                     Image(systemName: "plus.circle").foregroundColor(Color.green)
                                 } .sheet(isPresented: $showAddCustomerSheet) {
                                     AddCustomerSheet(showAddCustomerSheet: $showAddCustomerSheet)
                                 }
+                                //Generate csv file
+                                GenerateCSV()
                             }
                         }
                     }
