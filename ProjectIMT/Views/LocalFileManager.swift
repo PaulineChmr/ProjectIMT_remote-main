@@ -65,7 +65,7 @@ class LocalFileManager {
         guard let path = FileManager
             .default
             // Modifier la valeur du for pour choisir où enregistrer la photo
-            .urls(for: .documentDirectory, in: .userDomainMask)
+            .urls(for: .cachesDirectory, in: .userDomainMask)
             .first?
             .appendingPathComponent("\(self.customer2.id!.uuidString)_\(self.transformation2.id!.uuidString)_\(name).jpg")
         else{

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ShowTransformationView: View {
+    var customer2: Customer2
     var transformation2: Transformation2
     
     @State var SliderValue: Double = 0
@@ -21,15 +22,14 @@ struct ShowTransformationView: View {
                 Text(transformation2.name!)
             }
             
-            let before_pic = transformation2.before_picture!.toImage()
-            let after_pic = transformation2.after_picture!.toImage()
+            let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
             ZStack {
-                Image(uiImage: before_pic!)
+                Image(uiImage: manager.getImage(name: "before")!)
                     .resizable()
                     .scaledToFit()
                     .opacity(SliderValue)
                 
-                Image(uiImage: after_pic!)
+                Image(uiImage: manager.getImage(name: "after")!)
                     .resizable()
                     .scaledToFit()
                     .opacity(1 - SliderValue)

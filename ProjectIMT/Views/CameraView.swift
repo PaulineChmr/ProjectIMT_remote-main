@@ -49,9 +49,10 @@ struct CameraViewWithModel: View {
             
             
             // Face positionment layer
-            if before_picture != nil {
+            if transformation2.before_picture != "" {
                 if !camera.isTaken {
-                    Image(uiImage: self.before_picture!)
+                    let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
+                    Image(uiImage: manager.getImage(name: "before")!)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .ignoresSafeArea(.all, edges: .all)
@@ -59,7 +60,7 @@ struct CameraViewWithModel: View {
                 }
             }
             
-            if before_picture == nil {
+            else {
                 Image("ProportionFaceTemplate")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -142,14 +143,14 @@ struct CameraViewWithModel: View {
         let imageSaver = ImageSaver()
         
         if transformation2.before_picture != "" {
-            transformation2.after_picture=captured_image?.toPngString()
             transformation2.after_date = Date()
-            //manager.saveimage(image: captured_image!, name: "after")
+            manager.saveimage(image: captured_image!, name: "after")
+            transformation2.after_picture = manager.getPathForImage(name: "after")!.path
         }
         else {
-            transformation2.before_picture=captured_image?.toPngString()
             transformation2.before_date = Date()
-            //manager.saveimage(image: captured_image!, name: "before")
+            manager.saveimage(image: captured_image!, name: "before")
+            transformation2.before_picture = manager.getPathForImage(name: "before")!.path
         }
         saveContext()
         imageSaver.writeToPhotoAlbum(image: captured_image!)

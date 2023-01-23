@@ -36,10 +36,9 @@ struct ImagePicker: View {
         //(image != nil ? Image(uiImage: image!) : Image(systemName: "photo.fill"))
         //let before_pic = transformation2.before_picture
         //(image != nil ? Image(uiImage: transformation2.before_picture!.toImage()) : Image(systemName: "photo.fill"))
-        let before_pic = transformation2.before_picture!.toImage()
-        let after_pic = transformation2.after_picture!.toImage()
         
-        let imageaafficher = trouvelabonneimage(cote: cote, before_pic: before_pic, after_pic: after_pic)
+        
+        let imageaafficher = find(cote: cote)
         imageaafficher
                
                 .resizable()
@@ -84,11 +83,24 @@ struct ImagePicker: View {
     //Fonction de test pour afficher les photos à partir des documents de l'iPhone. Elle prend pas en compte la photo après transformation
     func find(cote: String) -> Image {
         let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
-        guard let im = manager.getImage(name: "before") else {
-            print("Pas d'image")
-            return Image(systemName: "photo.fill")
+        
+        if(cote == "right") {
+            guard let path_after = manager.getPathForImage(name: "after"),
+                  FileManager.default.fileExists(atPath: path_after.path)
+            else{
+                return Image(systemName: "photo.fill")
+            }
+            return Image(uiImage: manager.getImage(name: "after")!)
         }
-        return Image(uiImage: im)
+        
+        else{
+            guard let path_before = manager.getPathForImage(name: "before"),
+                  FileManager.default.fileExists(atPath: path_before.path)
+            else{
+                return Image(systemName: "photo.fill")
+            }
+            return Image(uiImage: manager.getImage(name: "before")!)
+        }
     }
 }
 

@@ -37,8 +37,8 @@ struct TransformationItemRow: View {
             
             //ImagePicker before
             //Les deux prochaine svariables sont inutiles (?)
-            let before_pic = transformation2.before_picture
-            let image = before_pic!.toImage()
+            //let before_pic = transformation2.before_picture
+            //let image = before_pic!.toImage()
             ImagePicker(image: $image,
                         date: $transformation2.before_date, transformation2: $transformation2, customer2: customer2,cote: "left")
             .padding(.horizontal)
@@ -55,15 +55,13 @@ struct TransformationItemRow: View {
                 Button(action: openTransformation ) { label:  do {
                     HStack {
                         
-                        DateIfPicturePresent(picture: transformation2.before_picture?.toImage(),
-                                             date: transformation2.before_date)
+                        DateIfPicturePresent(path: transformation2.before_picture, date: transformation2.before_date)
                         
                         Image(systemName: "arrowshape.turn.up.right.fill")
                             .foregroundColor(Color.white)
                             .font(.system(size: 15.0))
                         
-                        DateIfPicturePresent(picture: transformation2.after_picture?.toImage(),
-                                             date: transformation2.after_date)
+                        DateIfPicturePresent(path: transformation2.after_picture, date: transformation2.after_date)
                     }
                 }}
                 .frame(maxWidth: .infinity)
@@ -75,14 +73,14 @@ struct TransformationItemRow: View {
                     Button("OK", role: .cancel) { }
                 }
                 .sheet(isPresented: $transformationSheetIsPresented) {
-                    ShowTransformationView(transformation2: transformation2)
+                    ShowTransformationView(customer2: customer2, transformation2: transformation2)
                 }
             }
             
             //ImagePicker after
             //les deux prochaines variables sont inutiles (?)
-            let after_pic = transformation2.after_picture
-            let image2 = after_pic!.toImage()
+            //let after_pic = transformation2.after_picture
+            //let image2 = after_pic!.toImage()
             ImagePicker(image: $image2,
                         date: $transformation2.after_date,
                         before_picture: transformation2.before_picture?.toImage(), transformation2: $transformation2, customer2: customer2, cote: "right")
@@ -98,9 +96,9 @@ struct TransformationItemRow: View {
     }
     
     //MARK: VIEW FUNCTIONS
-    func DateIfPicturePresent(picture: UIImage?, date: Date?) -> some View {
+    func DateIfPicturePresent(path: String?, date: Date?) -> some View {
         Group {
-            if (picture != nil && date != nil) {
+            if (path != "" && date != nil) {
                 Text(date!.jourEtMois)
                     .foregroundColor(Color.white)
                     .font(.system(size: 15.0))
