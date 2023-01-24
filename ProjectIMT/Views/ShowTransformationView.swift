@@ -45,17 +45,6 @@ struct ShowTransformationView: View {
 }
 
 /*
-extension Transformation2 {
-    static func getPreviewTransfo() -> Transformation2 {
-        let transformation = Transformation2(name: "preview transfo",
-                                            before_picture: UIImage(contentsOfFile: "selfie1"),
-                                            after_picture: UIImage(contentsOfFile: "selfie2"),
-                                            before_date: Date(),
-                                            after_date: Date() )
-        return transformation
-    }
-}
-
 struct ShowTransformationView_Previews: PreviewProvider {
     static var previews: some View {
         ShowTransformationView(transformation: .getPreviewTransfo())

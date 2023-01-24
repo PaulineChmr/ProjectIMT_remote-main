@@ -28,6 +28,7 @@ struct GenerateCSV: View {
          {
              Image(systemName: "arrow.down.doc")
          }
+         //.position(x: 250, y: 21)
          .alert(isPresented: $showGenerateCSVAlert) {
              Alert(title: Text("Generate CSV file ?"),
                   primaryButton: .destructive(Text("Cancel")),
@@ -37,7 +38,7 @@ struct GenerateCSV: View {
     }
     
     func generateCSV(){
-        let fileName = "test.csv"
+        let fileName = "Liste des opérations.csv"
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let documentURL = URL(fileURLWithPath: documentDirectoryPath).appendingPathComponent(fileName)
         let output = OutputStream.toMemory()

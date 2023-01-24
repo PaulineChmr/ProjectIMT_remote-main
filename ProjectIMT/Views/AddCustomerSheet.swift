@@ -22,9 +22,11 @@ struct AddCustomerSheet: View {
     
     var body: some View{
         Form{
-            Section{
-                TextField("Prénom", text: $first_name) .padding()
-                TextField("Nom", text: $last_name) .padding()
+            Section(header: Text("Prénom")){
+                TextField("", text: $first_name) .padding()
+            }
+            Section(header: Text("Nom")){
+                TextField("", text: $last_name) .padding()
             }
             Section {
                 DatePicker(

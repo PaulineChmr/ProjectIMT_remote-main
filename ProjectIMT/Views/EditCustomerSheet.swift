@@ -25,11 +25,13 @@ struct EditCustomerSheet: View {
     
     var body: some View {
         Form{
-            Section{
-                TextField(customer.first_name ?? "Prénom", text: $first_name) .padding()
-                TextField(customer.last_name ?? "Nom", text: $last_name) .padding()
+            Section(header: Text("Prénom")){
+                TextField(customer.first_name ?? "", text: $first_name) .padding()
             }
-            Section {
+            Section(header: Text("Nom")){
+                TextField(customer.last_name ?? "", text: $last_name) .padding()
+            }
+            Section{
                 DatePicker(
                     "Date de naissance",
                     selection: $birthday_date,
@@ -39,7 +41,8 @@ struct EditCustomerSheet: View {
             Section{
                 Button("Modifier patient") {
                     self.editPatient()
-                } .alert("Veuillez saisir le prénom du patient...", isPresented: $showAlert) {
+                }.padding()
+                .alert("Veuillez saisir le prénom du patient...", isPresented: $showAlert) {
                     Button("OK", role: .cancel) { }
                 }
             }

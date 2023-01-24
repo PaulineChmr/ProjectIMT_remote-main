@@ -43,7 +43,7 @@ struct AddMusclesSheet: View {
     var transformation2: Transformation2
     var body: some View{
         Form{
-            Section{
+            Group{
                 Text("Frontalis côté sain")
                 TextField(String(transformation2.frontalis_sain), text: $frontalis_sain) .padding()
                 Text("Frontalis côté paralysé")
@@ -53,7 +53,7 @@ struct AddMusclesSheet: View {
                 Text("Orbicularis Oculi côté paralysé")
                 TextField(String(transformation2.orbicularis_paralyse), text: $orbicularis_paralyse) .padding()
             }
-            Section{
+            Group{
                     Text("Corrugator côté sain")
                     TextField(String(transformation2.corrugator_sain), text: $corrugator_sain) .padding()
                     Text("Corrugator côté paralysé")
@@ -63,7 +63,7 @@ struct AddMusclesSheet: View {
                     Text("Elevator Lèvre Supérieure côté paralysé")
                     TextField(String(transformation2.elevator_paralyse), text: $elevator_paralyse) .padding()
             }
-            Section{
+            Group{
                 Text("RLSAN côté sain")
                 TextField(String(transformation2.rlsan_sain), text: $rlsan_sain) .padding()
                 Text("RLSAN côté paralysé")
@@ -73,7 +73,7 @@ struct AddMusclesSheet: View {
                 Text("Petit Zygomatique côté paralysé")
                 TextField(String(transformation2.petitzygo_paralyse), text: $petitzygo_paralyse) .padding()
             }
-            Section{
+            Group{
                 Text("Grand Zygomatique côté sain")
                 TextField(String(transformation2.grandzygo_sain), text: $grandzygo_sain) .padding()
                 Text("Grand Zygomatique côté paralysé")
@@ -83,7 +83,7 @@ struct AddMusclesSheet: View {
                 Text("DAO côté paralysé")
                 TextField(String(transformation2.dao_paralyse), text: $dao_paralyse) .padding()
             }
-            Section{
+            Group{
                 Text("DLI côté sain")
                 TextField(String(transformation2.dli_sain), text: $dli_sain) .padding()
                 Text("DLI côté paralysé")
@@ -93,7 +93,7 @@ struct AddMusclesSheet: View {
                 Text("Mentalis côté paralysé")
                 TextField(String(transformation2.mentalis_paralyse), text: $mentalis_paralyse) .padding()
             }
-            Section{
+            Group{
                 Text("Platysma côté sain")
                 TextField(String(transformation2.platysma_sain), text: $platysma_sain) .padding()
                 Text("Platysma côté paralysé")

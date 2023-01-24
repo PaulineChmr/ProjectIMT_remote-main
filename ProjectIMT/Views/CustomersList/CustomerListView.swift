@@ -50,15 +50,17 @@ struct CustomersListView: View {
                             } .sheet(isPresented: $showAddTransformationSheet){
                                 AddTransformationSheet(showAddTransformationSheet: $showAddTransformationSheet, customer: customer2)
                             }
-                            
+                            //.swipeActions(edge: .trailing){
+                            //delete Customer button + confirmation alert
                             DeleteCustomerAction(customer_2: customer2)
-                            
+                            //edit Customer button + sheet
+                            //EditCustomerAction(customer_2: customer2)
                             Section(content: {
                                 ForEach(customer2.transformationArray, id: \.self) {transformation2 in
                                     TransformationItemRow(transformation2: .constant(transformation2), customer2: customer2)
                                     //AddTransformationButton(customer2: customer2)
                                     DeleteTransformationAction(customer2: customer2, transformation2: transformation2)
-                                    .frame(height: geometry.size.height/11, alignment: .center)}
+                                .frame(height: geometry.size.height/11, alignment: .center)}
                             })
                         }
                     }
@@ -66,7 +68,7 @@ struct CustomersListView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .principal) {
-                            HStack {
+                            HStack() {
                                 Text("Patients").font(.headline)
                                 Button(action: {showAddCustomerSheet = true}) {
                                     Image(systemName: "plus.circle").foregroundColor(Color.green)
@@ -83,7 +85,15 @@ struct CustomersListView: View {
         }
     }
     
-    //A supprimer ?
+    func EditCustomerAction(customer2: Customer2) -> some View{
+        return Button(action: {showEditCustomerSheet = true} ) {
+            Image(systemName: "pencil").foregroundColor(Color.blue)
+        }
+        .sheet(isPresented: $showEditCustomerSheet) {
+            EditCustomerSheet(showEditCustomerSheet: $showEditCustomerSheet, customer: customer2)
+        }
+    }
+    
     func DeleteTransformation(indexSet: IndexSet, customer2: Customer2){
         let indice = indexSet.first!
         let transformation = customer2.transformationArray[indice]
@@ -109,6 +119,9 @@ struct CustomersListView: View {
 
     
     func deleteCustomer(customer_2: Customer2){
+        for transformation2 in customer_2.transformationArray{
+            customer_2.removeFromTransformation_list(transformation2)
+        }
         //faire une boucle pour supprimer les transformations ici
         viewContext.delete(customer_2)
         saveContext()

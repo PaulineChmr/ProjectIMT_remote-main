@@ -62,11 +62,12 @@ class LocalFileManager {
     
     func getPathForImage(name: String) -> URL? {
         guard let cust_id = self.customer2.id,
+              let transfo_id = self.transformation2.id,
             let path = FileManager
             .default
             .urls(for: .documentDirectory, in: .userDomainMask)
             .first?
-            .appendingPathComponent("\(cust_id.uuidString)_\(self.transformation2.id!.uuidString)_\(name).jpg")
+            .appendingPathComponent("\(cust_id.uuidString)\(transfo_id.uuidString)\(name).jpg")
         else{
             print("Error getting path")
             return nil

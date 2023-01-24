@@ -27,16 +27,16 @@ struct AddTransformationSheet: View {
     
     var body: some View{
         Form{
-            Section{
-                TextField("Nom de l'opération", text: $name) .padding()
+            Section(header: Text("Nom de l'opération")){
+                TextField("", text: $name) .padding()
             }
-            Section {
+            /*Section {
                 DatePicker(
                     "Date de la première photo",
                     selection: $before_date,
                     displayedComponents: [.date]
                 )
-            }
+            }*/
             Section{
                 Button(action: addTransformation) {
                     Text("Ajouter opération")

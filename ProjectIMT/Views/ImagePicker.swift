@@ -42,22 +42,11 @@ struct ImagePicker: View {
                 .onTapGesture { self.shouldPresentImagePicker = true }
                 .sheet(isPresented: $shouldPresentImagePicker) {
                     CameraView(transformation2: $transformation2, customer2: customer2)
-                    /*
-                    if self.sourceType == .camera {
-                        CameraView(cdate: $date, transformation2: $transformation2, customer2: customer2)
-                    }
-                    else {
-                        SUImagePickerView(image: $image, date: $date, isPresented: $shouldPresentImagePicker, customer2: customer2, transformation2: transformation2)
-                    }
-                    */
             }.actionSheet(isPresented: $shouldPresentActionScheet) { () -> ActionSheet in
                 ActionSheet(title: Text("Selection Image"), buttons: [ActionSheet.Button.default(Text("Camera"), action: {
                     self.shouldPresentImagePicker = true
                     //self.sourceType = .camera
-                }),/* ActionSheet.Button.default(Text("Photo Library"), action: {
-                    self.shouldPresentImagePicker = true
-                    //self.sourceType = .photoLibrary
-                }),*/ ActionSheet.Button.cancel()])
+                }), ActionSheet.Button.cancel()])
         }
     }
     func trouvelabonneimage (cote: String, before_pic: UIImage?, after_pic: UIImage?) -> Image {
