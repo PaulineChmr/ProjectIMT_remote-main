@@ -16,10 +16,6 @@ struct TransformationItemRow: View {
     @State var showMusclesSheet: Bool = false
     var customer2 : Customer2
     
-    //Ajout de variables pour les ImagePicker, voir s'il faut les enlever
-    @State var image: UIImage?
-    @State var image2: UIImage?
-    
     //used in the View to display different situations
     var bothImagesTaken : Bool {
         if (transformation2.before_picture != "" && transformation2.after_picture != "") {
@@ -34,13 +30,8 @@ struct TransformationItemRow: View {
 
         
         HStack {
-            
-            //ImagePicker before
-            //Les deux prochaine svariables sont inutiles (?)
-            //let before_pic = transformation2.before_picture
-            //let image = before_pic!.toImage()
-            ImagePicker(image: $image,
-                        date: $transformation2.before_date, transformation2: $transformation2, customer2: customer2,cote: "left")
+
+            ImagePicker(transformation2: $transformation2, customer2: customer2,cote: "left")
             .padding(.horizontal)
             
             VStack(spacing: 4) {
@@ -77,13 +68,7 @@ struct TransformationItemRow: View {
                 }
             }
             
-            //ImagePicker after
-            //les deux prochaines variables sont inutiles (?)
-            //let after_pic = transformation2.after_picture
-            //let image2 = after_pic!.toImage()
-            ImagePicker(image: $image2,
-                        date: $transformation2.after_date,
-                        before_picture: transformation2.before_picture?.toImage(), transformation2: $transformation2, customer2: customer2, cote: "right")
+            ImagePicker(transformation2: $transformation2, customer2: customer2, cote: "right")
             .padding(.horizontal)
             .disabled(transformation2.before_picture == "")
             

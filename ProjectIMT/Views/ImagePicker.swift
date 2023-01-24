@@ -18,11 +18,7 @@ Both these solutions are UIKit View, hence the use of a ControllerRepresentable 
 
 struct ImagePicker: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
-    @Binding var image: UIImage?
-    @Binding var date: Date?
-    
-    var before_picture: UIImage?
+        
     @Binding var transformation2: Transformation2
     @State private var shouldPresentImagePicker = false
     @State private var shouldPresentActionScheet = false
@@ -32,11 +28,6 @@ struct ImagePicker: View {
     var cote: String
     
     var body: some View {
-       // let _ = print(image?.toPngString())
-        //(image != nil ? Image(uiImage: image!) : Image(systemName: "photo.fill"))
-        //let before_pic = transformation2.before_picture
-        //(image != nil ? Image(uiImage: transformation2.before_picture!.toImage()) : Image(systemName: "photo.fill"))
-        
         
         let imageaafficher = find(cote: cote)
         imageaafficher
@@ -45,24 +36,28 @@ struct ImagePicker: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 50, height: 50)
                 .clipShape(Circle())
-                .overlay(Circle().stroke(image != nil ? Color.orange : Color.gray, lineWidth: 2))
+                .overlay(Circle().stroke(self.cote == "left" && self.transformation2.before_picture != "" || self.cote == "right" && self.transformation2.after_picture != "" ? Color.orange : Color.gray, lineWidth: 2))
                 .shadow(radius: 10)
-                .onTapGesture { self.shouldPresentActionScheet = true }
+                // Remplacer le shouldPresentActionSheet ci-dessous par shouldPresentImagePicker
+                .onTapGesture { self.shouldPresentImagePicker = true }
                 .sheet(isPresented: $shouldPresentImagePicker) {
+                    CameraView(transformation2: $transformation2, customer2: customer2)
+                    /*
                     if self.sourceType == .camera {
-                        CameraView(captured_image: $image, date: $date, before_picture: .constant(before_picture), transformation2: $transformation2, customer2: customer2)
+                        CameraView(cdate: $date, transformation2: $transformation2, customer2: customer2)
                     }
                     else {
                         SUImagePickerView(image: $image, date: $date, isPresented: $shouldPresentImagePicker, customer2: customer2, transformation2: transformation2)
                     }
+                    */
             }.actionSheet(isPresented: $shouldPresentActionScheet) { () -> ActionSheet in
                 ActionSheet(title: Text("Selection Image"), buttons: [ActionSheet.Button.default(Text("Camera"), action: {
                     self.shouldPresentImagePicker = true
-                    self.sourceType = .camera
-                }), ActionSheet.Button.default(Text("Photo Library"), action: {
+                    //self.sourceType = .camera
+                }),/* ActionSheet.Button.default(Text("Photo Library"), action: {
                     self.shouldPresentImagePicker = true
-                    self.sourceType = .photoLibrary
-                }), ActionSheet.Button.cancel()])
+                    //self.sourceType = .photoLibrary
+                }),*/ ActionSheet.Button.cancel()])
         }
     }
     func trouvelabonneimage (cote: String, before_pic: UIImage?, after_pic: UIImage?) -> Image {

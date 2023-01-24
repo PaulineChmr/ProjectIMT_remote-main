@@ -26,8 +26,8 @@ struct EditCustomerSheet: View {
     var body: some View {
         Form{
             Section{
-                TextField("Prénom", text: $first_name) .padding()
-                TextField("Nom", text: $last_name) .padding()
+                TextField(customer.first_name ?? "Prénom", text: $first_name) .padding()
+                TextField(customer.last_name ?? "Nom", text: $last_name) .padding()
             }
             Section {
                 DatePicker(

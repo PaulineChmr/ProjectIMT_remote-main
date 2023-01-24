@@ -14,15 +14,14 @@ import Foundation
 struct CameraView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @Binding var captured_image: UIImage?
-    @Binding var date: Date?
-    @Binding var before_picture: UIImage?
+    @State var captured_image: UIImage?
+    //@Binding var date: Date?
     @Binding var transformation2: Transformation2
     var customer2 : Customer2
     
 
     var body: some View {
-        CameraViewWithModel(captured_image: $captured_image, before_picture: $before_picture, camera: CameraModel(captured_image: $captured_image, date: $date, transformation2: transformation2), transformation2: transformation2, customer2: customer2)
+        CameraViewWithModel(captured_image: $captured_image, camera: CameraModel(captured_image: $captured_image, transformation2: transformation2), transformation2: transformation2, customer2: customer2)
     }
 }
 
@@ -30,7 +29,7 @@ struct CameraViewWithModel: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Binding var captured_image: UIImage?
     
-    @Binding var before_picture: UIImage?
+    //@Binding var before_picture: UIImage?
     
     @StateObject var camera : CameraModel
     var transformation2 : Transformation2
@@ -49,6 +48,7 @@ struct CameraViewWithModel: View {
             
             
             // Face positionment layer
+            // Améliorer la condition du 1er if pour inclure le cas où le fichier jpeg aurait été supprimé manuellement
             if transformation2.before_picture != "" {
                 if !camera.isTaken {
                     let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
@@ -140,7 +140,6 @@ struct CameraViewWithModel: View {
     //J'ai mis en commentaire les fonctions permettant d'enregistrer la photo dans les documents/la galerie
     func savePic() {
         let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
-        let imageSaver = ImageSaver()
         
         if transformation2.before_picture != "" {
             transformation2.after_date = Date()
@@ -153,7 +152,6 @@ struct CameraViewWithModel: View {
             transformation2.before_picture = manager.getPathForImage(name: "before")!.path
         }
         saveContext()
-        imageSaver.writeToPhotoAlbum(image: captured_image!)
     }
         
     func saveContext(){
@@ -164,10 +162,6 @@ struct CameraViewWithModel: View {
             fatalError("Unresolved Error: \(error)")
         }
     }
-    
-    /*func buttonPosition() {
-        let position = CGPoint(x: 100, y: 50)
-    }*/
 }
 
 
@@ -191,14 +185,13 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     
     //Pic data
     @Binding var captured_image: UIImage?
-    @Binding var date: Date?
+    //@Binding var date: Date?
     var transformation2 : Transformation2
     
     
     
-    init(captured_image: Binding<UIImage?>, date: Binding<Date?>, transformation2: Transformation2) {
+    init(captured_image: Binding<UIImage?>, transformation2: Transformation2) {
         self._captured_image = captured_image
-        self._date = date
         self.transformation2 = transformation2
     }
     

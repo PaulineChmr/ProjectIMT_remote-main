@@ -29,7 +29,7 @@ struct CustomersListView: View {
     @State private var showAddCustomerSheet: Bool = false
     @State private var showEditCustomerSheet: Bool = false
     
-    //MARK: VIEW
+    //MARK: VIEW' ''
 
     var body: some View {
         GeometryReader { geometry in
@@ -50,12 +50,8 @@ struct CustomersListView: View {
                             } .sheet(isPresented: $showAddTransformationSheet){
                                 AddTransformationSheet(showAddTransformationSheet: $showAddTransformationSheet, customer: customer2)
                             }
-                            //.swipeActions(edge: .trailing){
-                            //delete Customer button + confirmation alert
-                            DeleteCustomerAction(customer_2: customer2)
                             
-                            //edit Customer button + sheet
-                            //EditCustomerAction(customer_2: customer2)
+                            DeleteCustomerAction(customer_2: customer2)
                             
                             Section(content: {
                                 ForEach(customer2.transformationArray, id: \.self) {transformation2 in
@@ -87,6 +83,7 @@ struct CustomersListView: View {
         }
     }
     
+    //A supprimer ?
     func DeleteTransformation(indexSet: IndexSet, customer2: Customer2){
         let indice = indexSet.first!
         let transformation = customer2.transformationArray[indice]
@@ -112,6 +109,7 @@ struct CustomersListView: View {
 
     
     func deleteCustomer(customer_2: Customer2){
+        //faire une boucle pour supprimer les transformations ici
         viewContext.delete(customer_2)
         saveContext()
     }
@@ -138,6 +136,7 @@ struct CustomersListView: View {
         manager.deleteImage(name: "before")
         manager.deleteImage(name: "after")
         customer2.removeFromTransformation_list(transformation2)
+        viewContext.delete(transformation2)
         saveContext()
     }
     
@@ -160,10 +159,10 @@ struct CustomersListView: View {
     }
     
      #if DEBUG
-     struct HomeView_Previews: PreviewProvider {
-     static var previews: some View {
-     CustomersListView()
-     }
-     }
+    struct HomeView_Previews: PreviewProvider {
+        static var previews: some View {
+            CustomersListView()
+        }
+    }
      #endif
 }

@@ -17,13 +17,6 @@ struct ProjectIMTApp: App {
         WindowGroup {
             MainView().environment(\.managedObjectContext,persistenceContainer.container.viewContext)
         }
-    /*
-    @StateObject var customersListManager = CustomersListManager()
-        
-    var body: some Scene {
-        WindowGroup {
-            MainView().environmentObject(customersListManager)
-        }*/
     }
     
 }

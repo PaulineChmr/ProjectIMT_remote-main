@@ -54,14 +54,14 @@ struct AddMusclesSheet: View {
                 TextField(String(transformation2.orbicularis_paralyse), text: $orbicularis_paralyse) .padding()
             }
             Section{
-                Text("Corrugator côté sain")
-                TextField(String(transformation2.corrugator_sain), text: $corrugator_sain) .padding()
-                Text("Corrugator côté paralysé")
-                TextField(String(transformation2.corrugator_paralyse), text: $corrugator_paralyse) .padding()
-                Text("Elevator Lèvre Supérieure côté sain")
-                TextField(String(transformation2.elevator_sain), text: $elevator_sain) .padding()
-                Text("Elevator Lèvre Supérieure côté paralysé")
-                TextField(String(transformation2.elevator_paralyse), text: $elevator_paralyse) .padding()
+                    Text("Corrugator côté sain")
+                    TextField(String(transformation2.corrugator_sain), text: $corrugator_sain) .padding()
+                    Text("Corrugator côté paralysé")
+                    TextField(String(transformation2.corrugator_paralyse), text: $corrugator_paralyse) .padding()
+                    Text("Elevator Lèvre Supérieure côté sain")
+                    TextField(String(transformation2.elevator_sain), text: $elevator_sain) .padding()
+                    Text("Elevator Lèvre Supérieure côté paralysé")
+                    TextField(String(transformation2.elevator_paralyse), text: $elevator_paralyse) .padding()
             }
             Section{
                 Text("RLSAN côté sain")

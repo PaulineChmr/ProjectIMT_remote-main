@@ -13,7 +13,7 @@ struct MainView: View {
         
     @FetchRequest(sortDescriptors: [])
     private var customers2: FetchedResults<Customer2>
-        
+    
     var body: some View{
         CustomersListView()
     }

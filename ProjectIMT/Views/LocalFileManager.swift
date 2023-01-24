@@ -4,7 +4,7 @@
 //
 //  Created by facetoface on 22/01/2023.
 //
-//  Ce fichier définit les classes permettant d'enregistrer les photos dans les documents/la gallerie
+//  Ce fichier définit les classes permettant d'enregistrer les photos dans les documents
 
 
 import SwiftUI
@@ -13,7 +13,6 @@ import CoreData
 import UIKit
 import Foundation
 
-// Sauvegarde dans les documents
 class LocalFileManager {
     var customer2: Customer2
     var transformation2: Transformation2
@@ -62,29 +61,16 @@ class LocalFileManager {
     }
     
     func getPathForImage(name: String) -> URL? {
-        guard let path = FileManager
+        guard let cust_id = self.customer2.id,
+            let path = FileManager
             .default
-            // Modifier la valeur du for pour choisir où enregistrer la photo
-            .urls(for: .cachesDirectory, in: .userDomainMask)
+            .urls(for: .documentDirectory, in: .userDomainMask)
             .first?
-            .appendingPathComponent("\(self.customer2.id!.uuidString)_\(self.transformation2.id!.uuidString)_\(name).jpg")
+            .appendingPathComponent("\(cust_id.uuidString)_\(self.transformation2.id!.uuidString)_\(name).jpg")
         else{
             print("Error getting path")
             return nil
         }
         return path
-    }
-}
-
-
-
-// Sauvegarde dans la galerie
-class ImageSaver: NSObject {
-    func writeToPhotoAlbum(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompleted), nil)
-    }
-    
-    @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        print("Save Finished!")
     }
 }
