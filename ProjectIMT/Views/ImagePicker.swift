@@ -38,33 +38,17 @@ struct ImagePicker: View {
                 .clipShape(Circle())
                 .overlay(Circle().stroke(self.cote == "left" && self.transformation2.before_picture != "" || self.cote == "right" && self.transformation2.after_picture != "" ? Color.orange : Color.gray, lineWidth: 2))
                 .shadow(radius: 10)
-                // Remplacer le shouldPresentActionSheet ci-dessous par shouldPresentImagePicker
                 .onTapGesture { self.shouldPresentImagePicker = true }
                 .sheet(isPresented: $shouldPresentImagePicker) {
                     CameraView(transformation2: $transformation2, customer2: customer2)
             }.actionSheet(isPresented: $shouldPresentActionScheet) { () -> ActionSheet in
                 ActionSheet(title: Text("Selection Image"), buttons: [ActionSheet.Button.default(Text("Camera"), action: {
                     self.shouldPresentImagePicker = true
-                    //self.sourceType = .camera
                 }), ActionSheet.Button.cancel()])
         }
     }
-    func trouvelabonneimage (cote: String, before_pic: UIImage?, after_pic: UIImage?) -> Image {
-        if(before_pic == nil){
-            return (Image(systemName: "photo.fill"))
-        }
-        else if(before_pic != nil && cote == "left"){
-            return(Image(uiImage: before_pic!))
-        }
-        else if(before_pic != nil && after_pic == nil && cote == "right"){
-            return(Image(systemName: "photo.fill"))
-        }
-        else{
-            return(Image(uiImage: after_pic!))
-        }
-    }
     
-    //Fonction de test pour afficher les photos à partir des documents de l'iPhone. Elle prend pas en compte la photo après transformation
+
     func find(cote: String) -> Image {
         let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
         

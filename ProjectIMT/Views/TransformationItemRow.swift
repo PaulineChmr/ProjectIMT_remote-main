@@ -118,11 +118,6 @@ extension Date {
     var jourEtMois: String { Formatter.jourEtMois.string(from: self) }
 }
 
-//not working
-
-
-
-
 /*
 #if DEBUG
 struct TransformationItemRow_Previews: PreviewProvider {

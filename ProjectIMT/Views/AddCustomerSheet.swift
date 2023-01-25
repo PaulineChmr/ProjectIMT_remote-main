@@ -16,7 +16,6 @@ struct AddCustomerSheet: View {
 
     @State var first_name: String = ""
     @State var last_name: String = ""
-    @State var birthday_date = Date()
     
     @State var showAlert = false
     
@@ -27,13 +26,6 @@ struct AddCustomerSheet: View {
             }
             Section(header: Text("Nom")){
                 TextField("", text: $last_name) .padding()
-            }
-            Section {
-                DatePicker(
-                    "Date de naissance",
-                    selection: $birthday_date,
-                    displayedComponents: [.date]
-                )
             }
             Section{
                 Button(action: addPatient) {
@@ -60,7 +52,6 @@ struct AddCustomerSheet: View {
             newCust.last_name = last_name
             newCust.id = UUID()
             newCust.first_name = first_name
-            newCust.birthday_date = birthday_date
             self.showAddCustomerSheet = false
         } else {
             self.showAlert = true

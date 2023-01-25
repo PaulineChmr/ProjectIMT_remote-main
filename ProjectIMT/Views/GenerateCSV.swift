@@ -38,6 +38,48 @@ struct GenerateCSV: View {
     }
     
     func generateCSV(){
+        generateCSVMapping()
+        generateCSVTransformations()
+    }
+    
+    func generateCSVMapping(){
+        let fileName = "Mapping Patients - Identifiants.csv"
+        let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let documentURL = URL(fileURLWithPath: documentDirectoryPath).appendingPathComponent(fileName)
+        let output = OutputStream.toMemory()
+        let csvWriter = CHCSVWriter(outputStream: output, encoding: String.Encoding.utf8.rawValue, delimiter: ",".utf16.first!)
+        
+        //Header for the csv file
+        
+        csvWriter?.writeField("IDENTIFIANT DU PATIENT")
+        csvWriter?.writeField("PRÉNOM")
+        csvWriter?.writeField("NOM")
+        csvWriter?.finishLine()
+        
+        //Array to add data for the customer
+        
+        var arrOfCustomerData = [[String]]()
+        
+        for customer2 in customers2 {
+            arrOfCustomerData.append([customer2.id?.uuidString ?? "", customer2.first_name ?? "", customer2.last_name ?? ""])
+        }
+        for elements in arrOfCustomerData.enumerated(){
+            csvWriter?.writeField(elements.element[0])
+            csvWriter?.writeField(elements.element[1])
+            csvWriter?.writeField(elements.element[2])
+            csvWriter?.finishLine()
+        }
+        csvWriter?.closeStream()
+        let buffer = (output.property(forKey: .dataWrittenToMemoryStreamKey) as? Data)!
+        do{
+            try buffer.write(to: documentURL)
+        }
+        catch{
+            
+        }
+    }
+    
+    func generateCSVTransformations(){
         let fileName = "Liste des opérations.csv"
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let documentURL = URL(fileURLWithPath: documentDirectoryPath).appendingPathComponent(fileName)
@@ -45,10 +87,13 @@ struct GenerateCSV: View {
         let csvWriter = CHCSVWriter(outputStream: output, encoding: String.Encoding.utf8.rawValue, delimiter: ",".utf16.first!)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/YYYY"
+        
         //Header for the csv file
-        csvWriter?.writeField("PRENOM")
-        csvWriter?.writeField("NOM")
-        csvWriter?.writeField("DATE DE NAISSANCE")
+        
+        //csvWriter?.writeField("PRENOM")
+        //csvWriter?.writeField("NOM")
+        csvWriter?.writeField("IDENTIFIANT DU PATIENT")
+        //csvWriter?.writeField("DATE DE NAISSANCE")
         csvWriter?.writeField("NOM DE LA TRANSFORMATION")
         csvWriter?.writeField("DATE AVANT")
         csvWriter?.writeField("DATE APRES")
@@ -84,7 +129,7 @@ struct GenerateCSV: View {
         
         for customer2 in customers2 {
             for transformation2 in customer2.transformationArray{
-                arrOfCustomerData.append([customer2.first_name ?? "", customer2.last_name ?? "", dateFormatter.string(from: customer2.birthday_date ?? Date()), transformation2.name ?? "", dateFormatter.string(from: transformation2.before_date ?? Date()), dateFormatter.string(from: transformation2.after_date ?? Date()), String(transformation2.frontalis_sain), String(transformation2.frontalis_paralyse), String(transformation2.orbicularis_sain), String(transformation2.orbicularis_paralyse), String(transformation2.corrugator_sain), String(transformation2.corrugator_paralyse), String(transformation2.elevator_sain), String(transformation2.elevator_paralyse), String(transformation2.rlsan_sain), String(transformation2.rlsan_paralyse), String(transformation2.petitzygo_sain), String(transformation2.petitzygo_paralyse), String(transformation2.grandzygo_sain), String(transformation2.grandzygo_paralyse), String(transformation2.dao_sain), String(transformation2.dao_paralyse), String(transformation2.dli_sain), String(transformation2.dli_paralyse), String(transformation2.mentalis_sain), String(transformation2.mentalis_paralyse), String(transformation2.platysma_sain), String(transformation2.platysma_paralyse), String(transformation2.buccinateur_sain), String(transformation2.buccinateur_paralyse)])
+                arrOfCustomerData.append([customer2.id?.uuidString ?? "", transformation2.name ?? "", dateFormatter.string(from: transformation2.before_date ?? Date()), dateFormatter.string(from: transformation2.after_date ?? Date()), String(transformation2.frontalis_sain), String(transformation2.frontalis_paralyse), String(transformation2.orbicularis_sain), String(transformation2.orbicularis_paralyse), String(transformation2.corrugator_sain), String(transformation2.corrugator_paralyse), String(transformation2.elevator_sain), String(transformation2.elevator_paralyse), String(transformation2.rlsan_sain), String(transformation2.rlsan_paralyse), String(transformation2.petitzygo_sain), String(transformation2.petitzygo_paralyse), String(transformation2.grandzygo_sain), String(transformation2.grandzygo_paralyse), String(transformation2.dao_sain), String(transformation2.dao_paralyse), String(transformation2.dli_sain), String(transformation2.dli_paralyse), String(transformation2.mentalis_sain), String(transformation2.mentalis_paralyse), String(transformation2.platysma_sain), String(transformation2.platysma_paralyse), String(transformation2.buccinateur_sain), String(transformation2.buccinateur_paralyse)])
             }
         }
         
@@ -117,8 +162,8 @@ struct GenerateCSV: View {
             csvWriter?.writeField(elements.element[25])
             csvWriter?.writeField(elements.element[26])
             csvWriter?.writeField(elements.element[27])
-            csvWriter?.writeField(elements.element[28])
-            csvWriter?.writeField(elements.element[29])
+            //csvWriter?.writeField(elements.element[28])
+            //csvWriter?.writeField(elements.element[29])
             
             
             csvWriter?.finishLine()

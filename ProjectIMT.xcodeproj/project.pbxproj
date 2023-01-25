@@ -18,8 +18,8 @@
 		88FBF845279710D4007377E9 /* ShowTransformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FBF844279710D4007377E9 /* ShowTransformationView.swift */; };
 		E178AF112968716600C517AF /* ProjectIMT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E178AF0F2968716600C517AF /* ProjectIMT.xcdatamodeld */; };
 		E178AF13296874CB00C517AF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178AF12296874CB00C517AF /* Persistence.swift */; };
-		E1A2B55B296E001B0042ED2C /* Customer2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B557296E001B0042ED2C /* Customer2+CoreDataClass.swift */; };
-		E1A2B560296E006A0042ED2C /* Customer2+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B55F296E006A0042ED2C /* Customer2+CoreDataProperties.swift */; };
+		E1A04D922981517500B5EB43 /* Customer2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04D902981517500B5EB43 /* Customer2+CoreDataClass.swift */; };
+		E1A04D932981517500B5EB43 /* Customer2+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04D912981517500B5EB43 /* Customer2+CoreDataProperties.swift */; };
 		E1A2B564296E0F8C0042ED2C /* EditCustomerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B563296E0F8C0042ED2C /* EditCustomerSheet.swift */; };
 		E1A4007E297D8525005AC47B /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4007D297D8525005AC47B /* LocalFileManager.swift */; };
 		E1A77EED296CF797000E6FA9 /* CustomerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A77EEC296CF797000E6FA9 /* CustomerListView.swift */; };
@@ -45,8 +45,8 @@
 		88FBF844279710D4007377E9 /* ShowTransformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTransformationView.swift; sourceTree = "<group>"; };
 		E178AF102968716600C517AF /* ProjectIMT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProjectIMT.xcdatamodel; sourceTree = "<group>"; };
 		E178AF12296874CB00C517AF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		E1A2B557296E001B0042ED2C /* Customer2+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Customer2+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E1A2B55F296E006A0042ED2C /* Customer2+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Customer2+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E1A04D902981517500B5EB43 /* Customer2+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Customer2+CoreDataClass.swift"; path = "../../Customer2+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E1A04D912981517500B5EB43 /* Customer2+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Customer2+CoreDataProperties.swift"; path = "../../Customer2+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E1A2B563296E0F8C0042ED2C /* EditCustomerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomerSheet.swift; sourceTree = "<group>"; };
 		E1A4007C297CC06F005AC47B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E1A4007D297D8525005AC47B /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
@@ -92,10 +92,10 @@
 		6644407D2788693300E451F6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E1A04D902981517500B5EB43 /* Customer2+CoreDataClass.swift */,
+				E1A04D912981517500B5EB43 /* Customer2+CoreDataProperties.swift */,
 				E1B7F48D297EC6C600CAD2BA /* Transformation2+CoreDataClass.swift */,
 				E1B7F48E297EC6C600CAD2BA /* Transformation2+CoreDataProperties.swift */,
-				E1A2B55F296E006A0042ED2C /* Customer2+CoreDataProperties.swift */,
-				E1A2B557296E001B0042ED2C /* Customer2+CoreDataClass.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,10 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1A2B560296E006A0042ED2C /* Customer2+CoreDataProperties.swift in Sources */,
 				668F40E22785D4EC00C35379 /* MainView.swift in Sources */,
+				E1A04D932981517500B5EB43 /* Customer2+CoreDataProperties.swift in Sources */,
 				668F40EC2785FA7B00C35379 /* TransformationItemRow.swift in Sources */,
 				E1B7F48F297EC6C600CAD2BA /* Transformation2+CoreDataClass.swift in Sources */,
+				E1A04D922981517500B5EB43 /* Customer2+CoreDataClass.swift in Sources */,
 				E1A77EF5296DC8FD000E6FA9 /* AddCustomerSheet.swift in Sources */,
 				E1AC5D3E29742FEF00902ED5 /* AddTransformationSheet.swift in Sources */,
 				663C0E31278B694D006576F0 /* TextFieldAlert.swift in Sources */,
@@ -260,7 +261,6 @@
 				88FBF845279710D4007377E9 /* ShowTransformationView.swift in Sources */,
 				668F40D42785D1A000C35379 /* ProjectIMTApp.swift in Sources */,
 				E1A77EED296CF797000E6FA9 /* CustomerListView.swift in Sources */,
-				E1A2B55B296E001B0042ED2C /* Customer2+CoreDataClass.swift in Sources */,
 				6644407827877E9700E451F6 /* ImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,7 +399,7 @@
 				INFOPLIST_FILE = ProjectIMT/Info.plist;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
-				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "We want to save your photo";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Les photos seront enregistrées dans vos documents";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save your photo ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -436,7 +436,7 @@
 				INFOPLIST_FILE = ProjectIMT/Info.plist;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
-				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "We want to save your photo";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Les photos seront enregistrées dans vos documents";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save your photo ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

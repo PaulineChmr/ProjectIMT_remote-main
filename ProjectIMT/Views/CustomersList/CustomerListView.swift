@@ -94,15 +94,14 @@ struct CustomersListView: View {
         }
     }
     
+    //Fonction à supprimer ?
     func DeleteTransformation(indexSet: IndexSet, customer2: Customer2){
         let indice = indexSet.first!
         let transformation = customer2.transformationArray[indice]
         customer2.removeFromTransformation_list(transformation)
         saveContext()
-        
     }
 
-    
     func DeleteCustomerAction(customer_2: Customer2) -> some View {
         return Button(role: .destructive, action: {
              showDeleteConfirmationAlert = true})
@@ -117,18 +116,14 @@ struct CustomersListView: View {
          }
      }
 
-    
     func deleteCustomer(customer_2: Customer2){
         for transformation2 in customer_2.transformationArray{
             customer_2.removeFromTransformation_list(transformation2)
+            deleteTransformation(customer2: customer_2, transformation2: transformation2)
         }
-        //faire une boucle pour supprimer les transformations ici
         viewContext.delete(customer_2)
         saveContext()
     }
-    
-    
-    
     
     func DeleteTransformationAction(customer2: Customer2, transformation2: Transformation2) -> some View {
         return Button(role: .destructive, action: {
@@ -153,14 +148,14 @@ struct CustomersListView: View {
         saveContext()
     }
     
-    func addCustomer(){
+    /*func addCustomer(){
         let newCustomer = Customer2(context: viewContext)
         newCustomer.birthday_date = Date()
         newCustomer.first_name = "Philibert"
         newCustomer.id = UUID()
         newCustomer.last_name = "Franck"
         newCustomer.number_of_transformations = 1
-    }
+    }*/
     
     func saveContext(){
         do {
@@ -170,12 +165,11 @@ struct CustomersListView: View {
             fatalError("Unresolved Error: \(error)")
         }
     }
-    
-     #if DEBUG
-    struct HomeView_Previews: PreviewProvider {
-        static var previews: some View {
-            CustomersListView()
-        }
-    }
-     #endif
 }
+#if DEBUG
+struct HomeView_Previews: PreviewProvider {
+   static var previews: some View {
+       CustomersListView()
+   }
+}
+#endif

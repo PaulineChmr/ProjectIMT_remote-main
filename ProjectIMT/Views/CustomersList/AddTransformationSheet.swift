@@ -30,13 +30,6 @@ struct AddTransformationSheet: View {
             Section(header: Text("Nom de l'opération")){
                 TextField("", text: $name) .padding()
             }
-            /*Section {
-                DatePicker(
-                    "Date de la première photo",
-                    selection: $before_date,
-                    displayedComponents: [.date]
-                )
-            }*/
             Section{
                 Button(action: addTransformation) {
                     Text("Ajouter opération")

@@ -43,71 +43,71 @@ struct AddMusclesSheet: View {
     var transformation2: Transformation2
     var body: some View{
         Form{
-            Group{
-                Text("Frontalis côté sain")
-                TextField(String(transformation2.frontalis_sain), text: $frontalis_sain) .padding()
-                Text("Frontalis côté paralysé")
-                TextField(String(transformation2.frontalis_paralyse), text: $frontalis_paralyse) .padding()
-                Text("Orbicularis Oculi côté sain")
-                TextField(String(transformation2.orbicularis_sain), text: $orbicularis_sain) .padding()
-                Text("Orbicularis Oculi côté paralysé")
-                TextField(String(transformation2.orbicularis_paralyse), text: $orbicularis_paralyse) .padding()
-            }
-            Group{
+                Group{
+                    Text("Frontalis côté sain")
+                    TextField(String(transformation2.frontalis_sain), text: $frontalis_sain) .padding()
+                    Text("Orbicularis Oculi côté sain")
+                    TextField(String(transformation2.orbicularis_sain), text: $orbicularis_sain) .padding()
                     Text("Corrugator côté sain")
                     TextField(String(transformation2.corrugator_sain), text: $corrugator_sain) .padding()
+                    Text("Elevator Lèvre Supérieure côté sain")
+                }
+                Group{
+                    TextField(String(transformation2.elevator_sain), text: $elevator_sain) .padding()
+                    Text("RLSAN côté sain")
+                    TextField(String(transformation2.rlsan_sain), text: $rlsan_sain) .padding()
+                    Text("Petit Zygomatique côté sain")
+                    TextField(String(transformation2.petitzygo_sain), text: $petitzygo_sain) .padding()
+                    Text("Grand Zygomatique côté sain")
+                    TextField(String(transformation2.grandzygo_sain), text: $grandzygo_sain) .padding()
+                    Text("DAO côté sain")
+                    TextField(String(transformation2.dao_sain), text: $dao_sain) .padding()
+                }
+                Group{
+                    Text("DLI côté sain")
+                    TextField(String(transformation2.dli_sain), text: $dli_sain) .padding()
+                    Text("Mentalis côté sain")
+                    TextField(String(transformation2.mentalis_sain), text: $mentalis_sain) .padding()
+                    Text("Platysma côté sain")
+                    TextField(String(transformation2.platysma_sain), text: $platysma_sain) .padding()
+                    Text("Buccinateur côté sain")
+                    TextField(String(transformation2.buccinateur_sain), text: $buccinateur_sain) .padding()
+                }
+                Group{
+                    Text("Frontalis côté paralysé")
+                    TextField(String(transformation2.frontalis_paralyse), text: $frontalis_paralyse) .padding()
+                    Text("Orbicularis Oculi côté paralysé")
+                    TextField(String(transformation2.orbicularis_paralyse), text: $orbicularis_paralyse) .padding()
                     Text("Corrugator côté paralysé")
                     TextField(String(transformation2.corrugator_paralyse), text: $corrugator_paralyse) .padding()
-                    Text("Elevator Lèvre Supérieure côté sain")
-                    TextField(String(transformation2.elevator_sain), text: $elevator_sain) .padding()
                     Text("Elevator Lèvre Supérieure côté paralysé")
                     TextField(String(transformation2.elevator_paralyse), text: $elevator_paralyse) .padding()
-            }
-            Group{
-                Text("RLSAN côté sain")
-                TextField(String(transformation2.rlsan_sain), text: $rlsan_sain) .padding()
-                Text("RLSAN côté paralysé")
-                TextField(String(transformation2.rlsan_paralyse), text: $rlsan_paralyse) .padding()
-                Text("Petit Zygomatique côté sain")
-                TextField(String(transformation2.petitzygo_sain), text: $petitzygo_sain) .padding()
-                Text("Petit Zygomatique côté paralysé")
-                TextField(String(transformation2.petitzygo_paralyse), text: $petitzygo_paralyse) .padding()
-            }
-            Group{
-                Text("Grand Zygomatique côté sain")
-                TextField(String(transformation2.grandzygo_sain), text: $grandzygo_sain) .padding()
-                Text("Grand Zygomatique côté paralysé")
-                TextField(String(transformation2.grandzygo_paralyse), text: $grandzygo_paralyse) .padding()
-                Text("DAO côté sain")
-                TextField(String(transformation2.dao_sain), text: $dao_sain) .padding()
-                Text("DAO côté paralysé")
-                TextField(String(transformation2.dao_paralyse), text: $dao_paralyse) .padding()
-            }
-            Group{
-                Text("DLI côté sain")
-                TextField(String(transformation2.dli_sain), text: $dli_sain) .padding()
-                Text("DLI côté paralysé")
-                TextField(String(transformation2.dli_paralyse), text: $dli_paralyse) .padding()
-                Text("Mentalis côté sain")
-                TextField(String(transformation2.mentalis_sain), text: $mentalis_sain) .padding()
-                Text("Mentalis côté paralysé")
-                TextField(String(transformation2.mentalis_paralyse), text: $mentalis_paralyse) .padding()
-            }
-            Group{
-                Text("Platysma côté sain")
-                TextField(String(transformation2.platysma_sain), text: $platysma_sain) .padding()
-                Text("Platysma côté paralysé")
-                TextField(String(transformation2.platysma_paralyse), text: $platysma_paralyse) .padding()
-                Text("Buccinateur côté sain")
-                TextField(String(transformation2.buccinateur_sain), text: $buccinateur_sain) .padding()
-                Text("Buccinateur côté paralysé")
-                TextField(String(transformation2.buccinateur_paralyse), text: $buccinateur_paralyse) .padding()
-            }
+                }
+                Group{
+                    Text("RLSAN côté paralysé")
+                    TextField(String(transformation2.rlsan_paralyse), text: $rlsan_paralyse) .padding()
+                    Text("Petit Zygomatique côté paralysé")
+                    TextField(String(transformation2.petitzygo_paralyse), text: $petitzygo_paralyse) .padding()
+                    Text("Grand Zygomatique côté paralysé")
+                    TextField(String(transformation2.grandzygo_paralyse), text: $grandzygo_paralyse) .padding()
+                    Text("DAO côté paralysé")
+                    TextField(String(transformation2.dao_paralyse), text: $dao_paralyse) .padding()
+                }
+                Group{
+                    Text("DLI côté paralysé")
+                    TextField(String(transformation2.dli_paralyse), text: $dli_paralyse) .padding()
+                    Text("Mentalis côté paralysé")
+                    TextField(String(transformation2.mentalis_paralyse), text: $mentalis_paralyse) .padding()
+                    Text("Platysma côté paralysé")
+                    TextField(String(transformation2.platysma_paralyse), text: $platysma_paralyse) .padding()
+                    Text("Buccinateur côté paralysé")
+                    TextField(String(transformation2.buccinateur_paralyse), text: $buccinateur_paralyse) .padding()
+                }
             Section{
                 Button("Ajouter injections") {
                     self.editMuscles()
                 } .alert("Veuillez saisir les quantités...", isPresented: $showAlert) {
-                    Button("OK", role: .cancel) { }
+                Button("OK", role: .cancel) { }
                 }
             }
         }.navigationTitle(Text("Quantités injectées"))

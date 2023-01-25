@@ -49,9 +49,9 @@ struct CameraViewWithModel: View {
             
             // Face positionment layer
             // Améliorer la condition du 1er if pour inclure le cas où le fichier jpeg aurait été supprimé manuellement
+            let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
             if transformation2.before_picture != "" {
                 if !camera.isTaken {
-                    let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
                     Image(uiImage: manager.getImage(name: "before")!)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -137,7 +137,7 @@ struct CameraViewWithModel: View {
         
     }
     
-    //J'ai mis en commentaire les fonctions permettant d'enregistrer la photo dans les documents/la galerie
+
     func savePic() {
         let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
         
@@ -185,7 +185,6 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     
     //Pic data
     @Binding var captured_image: UIImage?
-    //@Binding var date: Date?
     var transformation2 : Transformation2
     
     

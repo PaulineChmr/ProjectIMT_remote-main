@@ -16,11 +16,8 @@ struct EditCustomerSheet: View {
     
     @State var first_name: String = ""
     @State var last_name: String = ""
-    @State var birthday_date = Date()
     
     @State var showAlert = false
-    //@EnvironmentObject var customersListManager : CustomersListManager
-    
     var customer : Customer2
     
     var body: some View {
@@ -30,13 +27,6 @@ struct EditCustomerSheet: View {
             }
             Section(header: Text("Nom")){
                 TextField(customer.last_name ?? "", text: $last_name) .padding()
-            }
-            Section{
-                DatePicker(
-                    "Date de naissance",
-                    selection: $birthday_date,
-                    displayedComponents: [.date]
-                )
             }
             Section{
                 Button("Modifier patient") {
@@ -61,7 +51,6 @@ struct EditCustomerSheet: View {
         if (self.first_name != "") {
             customer.last_name = last_name
             customer.first_name = first_name
-            customer.birthday_date = birthday_date
             saveContext()
             self.showEditCustomerSheet = false
         } else {
