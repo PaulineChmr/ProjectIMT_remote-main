@@ -2,8 +2,9 @@
 //  TransformationItem.swift
 //  ProjectIMT
 //
-//  Created by Maël Trouillet on 05/01/2022.
+//  Created by facetoface on 05/01/2022.
 //
+// The view who shows the line of each transformattion.
 
 import SwiftUI
 

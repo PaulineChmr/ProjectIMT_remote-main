@@ -2,8 +2,9 @@
 //  EditCustomerSheet.swift
 //  ProjectIMT
 //
-//  Created by Maël Trouillet on 20/01/2022.
+//  Created by facetoface on 20/01/2022.
 //
+// Edit and save the modification of a customer in CoreData.
 
 import SwiftUI
 
@@ -48,6 +49,7 @@ struct EditCustomerSheet: View {
     }
     
     func editPatient(){
+        //save the modification in CoreData
         if (self.first_name != "") {
             customer.last_name = last_name
             customer.first_name = first_name

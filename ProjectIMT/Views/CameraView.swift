@@ -2,8 +2,9 @@
 //  CameraView.swift
 //  ProjectIMT
 //
-//  Created by Maël Trouillet on 18/01/2022.
+//  Created by facetoface on 18/01/2022.
 //
+// This view allows to take before and after pictures.
 
 import SwiftUI
 import AVFoundation
@@ -144,11 +145,13 @@ struct CameraViewWithModel: View {
         if transformation2.before_picture != "" {
             transformation2.after_date = Date()
             manager.saveimage(image: captured_image!, name: "after")
+            //manager.saveimage_gallery(image: captured_image!, name: "after")
             transformation2.after_picture = manager.getPathForImage(name: "after")!.path
         }
         else {
             transformation2.before_date = Date()
             manager.saveimage(image: captured_image!, name: "before")
+            //manager.saveimage_gallery(image: captured_image!, name: "before")
             transformation2.before_picture = manager.getPathForImage(name: "before")!.path
         }
         saveContext()

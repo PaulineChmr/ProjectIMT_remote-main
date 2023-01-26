@@ -4,6 +4,7 @@
 //
 //  Created by facetoface on 10/01/2023.
 //
+// Create and save a new transformation for a customer in CoreData.
 
 import SwiftUI
 
@@ -50,6 +51,7 @@ struct AddTransformationSheet: View {
     }
     
     func addTransformation(){
+        //save the new transformation in CoreData
         if (self.name != "") {
             let newTransformation = Transformation2(context: viewContext)
             newTransformation.after_date = after_date

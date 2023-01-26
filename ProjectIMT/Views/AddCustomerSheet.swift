@@ -4,6 +4,7 @@
 //
 //  Created by facetoface on 10/01/2023.
 //
+// Create and save a new customer in CoreData.
 
 import SwiftUI
 
@@ -37,16 +38,8 @@ struct AddCustomerSheet: View {
         }
     }
     
-    func saveContext(){
-        do {
-            try viewContext.save()
-        } catch {
-            let error = error as NSError
-            fatalError("Unresolved Error: \(error)")
-        }
-    }
-    
     func addPatient(){
+        //save the new customer in CoreData
         if (self.first_name != "") {
             let newCust = Customer2(context: viewContext)
             newCust.last_name = last_name
@@ -57,5 +50,14 @@ struct AddCustomerSheet: View {
             self.showAlert = true
         }
         saveContext()
+    }
+    
+    func saveContext(){
+        do {
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Unresolved Error: \(error)")
+        }
     }
 }

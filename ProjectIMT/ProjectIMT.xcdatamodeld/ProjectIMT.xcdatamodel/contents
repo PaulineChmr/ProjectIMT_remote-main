@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AdditionalPhoto2" representedClassName="AdditionalPhoto2" syncable="YES" codeGenerationType="class">
+        <attribute name="after_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="after_picture" optional="YES" attributeType="String"/>
+        <attribute name="before_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="before_picture" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="transformation_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
     <entity name="Customer2" representedClassName=".Customer2" syncable="YES">
         <attribute name="first_name" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>

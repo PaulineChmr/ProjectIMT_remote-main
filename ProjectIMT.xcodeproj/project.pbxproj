@@ -85,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				663C0E30278B694D006576F0 /* TextFieldAlert.swift */,
+				E1B7F495297F2D0300CAD2BA /* ProjectIMT-Bridging-Header.h */,
 			);
 			path = Utilitaries;
 			sourceTree = "<group>";
@@ -148,7 +149,6 @@
 				6644407E2788694100E451F6 /* Views */,
 				663C0E2D278A35F0006576F0 /* Utilitaries */,
 				668F40D92785D1A100C35379 /* Preview Content */,
-				E1B7F495297F2D0300CAD2BA /* ProjectIMT-Bridging-Header.h */,
 			);
 			path = ProjectIMT;
 			sourceTree = "<group>";

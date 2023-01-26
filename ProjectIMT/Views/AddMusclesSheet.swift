@@ -4,6 +4,7 @@
 //
 //  Created by facetoface on 10/01/2023.
 //
+// Write and save the quantity injected for a transformation.
 
 import SwiftUI
 
@@ -45,63 +46,63 @@ struct AddMusclesSheet: View {
         Form{
                 Group{
                     Text("Frontalis côté sain")
-                    TextField(String(transformation2.frontalis_sain), text: $frontalis_sain) .padding()
+                    TextField(String(transformation2.frontalis_sain), text: $frontalis_sain) .padding() .keyboardType(.decimalPad)
                     Text("Orbicularis Oculi côté sain")
-                    TextField(String(transformation2.orbicularis_sain), text: $orbicularis_sain) .padding()
+                    TextField(String(transformation2.orbicularis_sain), text: $orbicularis_sain) .padding() .keyboardType(.decimalPad)
                     Text("Corrugator côté sain")
-                    TextField(String(transformation2.corrugator_sain), text: $corrugator_sain) .padding()
+                    TextField(String(transformation2.corrugator_sain), text: $corrugator_sain) .padding() .keyboardType(.decimalPad)
                     Text("Elevator Lèvre Supérieure côté sain")
+                    TextField(String(transformation2.elevator_sain), text: $elevator_sain) .padding() .keyboardType(.decimalPad)
                 }
                 Group{
-                    TextField(String(transformation2.elevator_sain), text: $elevator_sain) .padding()
                     Text("RLSAN côté sain")
-                    TextField(String(transformation2.rlsan_sain), text: $rlsan_sain) .padding()
+                    TextField(String(transformation2.rlsan_sain), text: $rlsan_sain) .padding() .keyboardType(.decimalPad)
                     Text("Petit Zygomatique côté sain")
-                    TextField(String(transformation2.petitzygo_sain), text: $petitzygo_sain) .padding()
+                    TextField(String(transformation2.petitzygo_sain), text: $petitzygo_sain) .padding() .keyboardType(.decimalPad)
                     Text("Grand Zygomatique côté sain")
-                    TextField(String(transformation2.grandzygo_sain), text: $grandzygo_sain) .padding()
+                    TextField(String(transformation2.grandzygo_sain), text: $grandzygo_sain) .padding() .keyboardType(.decimalPad)
                     Text("DAO côté sain")
-                    TextField(String(transformation2.dao_sain), text: $dao_sain) .padding()
+                    TextField(String(transformation2.dao_sain), text: $dao_sain) .padding() .keyboardType(.decimalPad)
                 }
                 Group{
                     Text("DLI côté sain")
-                    TextField(String(transformation2.dli_sain), text: $dli_sain) .padding()
+                    TextField(String(transformation2.dli_sain), text: $dli_sain) .padding() .keyboardType(.decimalPad)
                     Text("Mentalis côté sain")
-                    TextField(String(transformation2.mentalis_sain), text: $mentalis_sain) .padding()
+                    TextField(String(transformation2.mentalis_sain), text: $mentalis_sain) .padding() .keyboardType(.decimalPad)
                     Text("Platysma côté sain")
-                    TextField(String(transformation2.platysma_sain), text: $platysma_sain) .padding()
+                    TextField(String(transformation2.platysma_sain), text: $platysma_sain) .padding() .keyboardType(.decimalPad)
                     Text("Buccinateur côté sain")
-                    TextField(String(transformation2.buccinateur_sain), text: $buccinateur_sain) .padding()
+                    TextField(String(transformation2.buccinateur_sain), text: $buccinateur_sain) .padding() .keyboardType(.decimalPad)
                 }
                 Group{
                     Text("Frontalis côté paralysé")
-                    TextField(String(transformation2.frontalis_paralyse), text: $frontalis_paralyse) .padding()
+                    TextField(String(transformation2.frontalis_paralyse), text: $frontalis_paralyse) .padding() .keyboardType(.decimalPad)
                     Text("Orbicularis Oculi côté paralysé")
-                    TextField(String(transformation2.orbicularis_paralyse), text: $orbicularis_paralyse) .padding()
+                    TextField(String(transformation2.orbicularis_paralyse), text: $orbicularis_paralyse) .padding() .keyboardType(.decimalPad)
                     Text("Corrugator côté paralysé")
-                    TextField(String(transformation2.corrugator_paralyse), text: $corrugator_paralyse) .padding()
+                    TextField(String(transformation2.corrugator_paralyse), text: $corrugator_paralyse) .padding() .keyboardType(.decimalPad)
                     Text("Elevator Lèvre Supérieure côté paralysé")
-                    TextField(String(transformation2.elevator_paralyse), text: $elevator_paralyse) .padding()
+                    TextField(String(transformation2.elevator_paralyse), text: $elevator_paralyse) .padding() .keyboardType(.decimalPad)
                 }
                 Group{
                     Text("RLSAN côté paralysé")
-                    TextField(String(transformation2.rlsan_paralyse), text: $rlsan_paralyse) .padding()
+                    TextField(String(transformation2.rlsan_paralyse), text: $rlsan_paralyse) .padding() .keyboardType(.decimalPad)
                     Text("Petit Zygomatique côté paralysé")
-                    TextField(String(transformation2.petitzygo_paralyse), text: $petitzygo_paralyse) .padding()
+                    TextField(String(transformation2.petitzygo_paralyse), text: $petitzygo_paralyse) .padding() .keyboardType(.decimalPad)
                     Text("Grand Zygomatique côté paralysé")
-                    TextField(String(transformation2.grandzygo_paralyse), text: $grandzygo_paralyse) .padding()
+                    TextField(String(transformation2.grandzygo_paralyse), text: $grandzygo_paralyse) .padding() .keyboardType(.decimalPad)
                     Text("DAO côté paralysé")
-                    TextField(String(transformation2.dao_paralyse), text: $dao_paralyse) .padding()
+                    TextField(String(transformation2.dao_paralyse), text: $dao_paralyse) .padding() .keyboardType(.decimalPad)
                 }
                 Group{
                     Text("DLI côté paralysé")
-                    TextField(String(transformation2.dli_paralyse), text: $dli_paralyse) .padding()
+                    TextField(String(transformation2.dli_paralyse), text: $dli_paralyse) .padding() .keyboardType(.decimalPad)
                     Text("Mentalis côté paralysé")
-                    TextField(String(transformation2.mentalis_paralyse), text: $mentalis_paralyse) .padding()
+                    TextField(String(transformation2.mentalis_paralyse), text: $mentalis_paralyse) .padding() .keyboardType(.decimalPad)
                     Text("Platysma côté paralysé")
-                    TextField(String(transformation2.platysma_paralyse), text: $platysma_paralyse) .padding()
+                    TextField(String(transformation2.platysma_paralyse), text: $platysma_paralyse) .padding() .keyboardType(.decimalPad)
                     Text("Buccinateur côté paralysé")
-                    TextField(String(transformation2.buccinateur_paralyse), text: $buccinateur_paralyse) .padding()
+                    TextField(String(transformation2.buccinateur_paralyse), text: $buccinateur_paralyse) .padding() .keyboardType(.decimalPad)
                 }
             Section{
                 Button("Ajouter injections") {
@@ -123,6 +124,7 @@ struct AddMusclesSheet: View {
     }
     
     func editMuscles(){
+        //save the injected quantities in CoreData
             transformation2.frontalis_sain = Double(frontalis_sain) ?? 0
             transformation2.frontalis_paralyse = Double(frontalis_paralyse) ?? 0
             transformation2.orbicularis_sain = Double(orbicularis_sain) ?? 0

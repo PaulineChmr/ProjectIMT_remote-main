@@ -2,8 +2,9 @@
 //  ShowTransformation.swift
 //  ProjectIMT
 //
-//  Created by Sacha sicoli on 18/01/2022.
+//  Created by facetoface on 18/01/2022.
 //
+// This view shows the cursor to see the differences between the before and the after pictures.
 
 import SwiftUI
 
@@ -27,12 +28,12 @@ struct ShowTransformationView: View {
                 Image(uiImage: manager.getImage(name: "before")!)
                     .resizable()
                     .scaledToFit()
-                    .opacity(SliderValue)
+                    .opacity(1 - SliderValue)
                 
                 Image(uiImage: manager.getImage(name: "after")!)
                     .resizable()
                     .scaledToFit()
-                    .opacity(1 - SliderValue)
+                    .opacity(SliderValue)
             }
             
                 

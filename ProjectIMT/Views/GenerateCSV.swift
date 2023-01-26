@@ -2,8 +2,9 @@
 //  GenerateCSV.swift
 //  ProjectIMT
 //
-//  Created by Maël Trouillet on 05/01/2022.
+//  Created by facetoface on 23/01/2023.
 //
+// Generate the two CSV : one with the mapping between id and customer and one with all customers' informations.
 
 import SwiftUI
 
@@ -17,7 +18,7 @@ struct GenerateCSV: View {
     //MARK: VIEW
     var body: some View {
         HStack {
-            //createcsv button + action
+            //Create CSV button + action
             CreateCSV()
         }
     }
@@ -28,7 +29,6 @@ struct GenerateCSV: View {
          {
              Image(systemName: "arrow.down.doc")
          }
-         //.position(x: 250, y: 21)
          .alert(isPresented: $showGenerateCSVAlert) {
              Alert(title: Text("Generate CSV file ?"),
                   primaryButton: .destructive(Text("Cancel")),
@@ -43,6 +43,7 @@ struct GenerateCSV: View {
     }
     
     func generateCSVMapping(){
+        // Create and export the first CSV file
         let fileName = "Mapping Patients - Identifiants.csv"
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let documentURL = URL(fileURLWithPath: documentDirectoryPath).appendingPathComponent(fileName)
@@ -50,14 +51,12 @@ struct GenerateCSV: View {
         let csvWriter = CHCSVWriter(outputStream: output, encoding: String.Encoding.utf8.rawValue, delimiter: ",".utf16.first!)
         
         //Header for the csv file
-        
         csvWriter?.writeField("IDENTIFIANT DU PATIENT")
         csvWriter?.writeField("PRÉNOM")
         csvWriter?.writeField("NOM")
         csvWriter?.finishLine()
         
         //Array to add data for the customer
-        
         var arrOfCustomerData = [[String]]()
         
         for customer2 in customers2 {
@@ -80,6 +79,7 @@ struct GenerateCSV: View {
     }
     
     func generateCSVTransformations(){
+        // Create and export the second CSV file
         let fileName = "Liste des opérations.csv"
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let documentURL = URL(fileURLWithPath: documentDirectoryPath).appendingPathComponent(fileName)
@@ -89,12 +89,9 @@ struct GenerateCSV: View {
         dateFormatter.dateFormat = "dd/MM/YYYY"
         
         //Header for the csv file
-        
-        //csvWriter?.writeField("PRENOM")
-        //csvWriter?.writeField("NOM")
         csvWriter?.writeField("IDENTIFIANT DU PATIENT")
-        //csvWriter?.writeField("DATE DE NAISSANCE")
         csvWriter?.writeField("NOM DE LA TRANSFORMATION")
+        csvWriter?.writeField("IDENTIFIANT DE LA TRANSFORMATION")
         csvWriter?.writeField("DATE AVANT")
         csvWriter?.writeField("DATE APRES")
         csvWriter?.writeField("FRONTALIS CÔTÉ SAIN")
@@ -124,12 +121,11 @@ struct GenerateCSV: View {
         csvWriter?.finishLine()
     
         //Array to add data for the customer
-        
         var arrOfCustomerData = [[String]]()
         
         for customer2 in customers2 {
             for transformation2 in customer2.transformationArray{
-                arrOfCustomerData.append([customer2.id?.uuidString ?? "", transformation2.name ?? "", dateFormatter.string(from: transformation2.before_date ?? Date()), dateFormatter.string(from: transformation2.after_date ?? Date()), String(transformation2.frontalis_sain), String(transformation2.frontalis_paralyse), String(transformation2.orbicularis_sain), String(transformation2.orbicularis_paralyse), String(transformation2.corrugator_sain), String(transformation2.corrugator_paralyse), String(transformation2.elevator_sain), String(transformation2.elevator_paralyse), String(transformation2.rlsan_sain), String(transformation2.rlsan_paralyse), String(transformation2.petitzygo_sain), String(transformation2.petitzygo_paralyse), String(transformation2.grandzygo_sain), String(transformation2.grandzygo_paralyse), String(transformation2.dao_sain), String(transformation2.dao_paralyse), String(transformation2.dli_sain), String(transformation2.dli_paralyse), String(transformation2.mentalis_sain), String(transformation2.mentalis_paralyse), String(transformation2.platysma_sain), String(transformation2.platysma_paralyse), String(transformation2.buccinateur_sain), String(transformation2.buccinateur_paralyse)])
+                arrOfCustomerData.append([customer2.id?.uuidString ?? "", transformation2.name ?? "", transformation2.id?.uuidString ?? "", dateFormatter.string(from: transformation2.before_date ?? Date()), dateFormatter.string(from: transformation2.after_date ?? Date()), String(transformation2.frontalis_sain), String(transformation2.frontalis_paralyse), String(transformation2.orbicularis_sain), String(transformation2.orbicularis_paralyse), String(transformation2.corrugator_sain), String(transformation2.corrugator_paralyse), String(transformation2.elevator_sain), String(transformation2.elevator_paralyse), String(transformation2.rlsan_sain), String(transformation2.rlsan_paralyse), String(transformation2.petitzygo_sain), String(transformation2.petitzygo_paralyse), String(transformation2.grandzygo_sain), String(transformation2.grandzygo_paralyse), String(transformation2.dao_sain), String(transformation2.dao_paralyse), String(transformation2.dli_sain), String(transformation2.dli_paralyse), String(transformation2.mentalis_sain), String(transformation2.mentalis_paralyse), String(transformation2.platysma_sain), String(transformation2.platysma_paralyse), String(transformation2.buccinateur_sain), String(transformation2.buccinateur_paralyse)])
             }
         }
         
@@ -162,10 +158,7 @@ struct GenerateCSV: View {
             csvWriter?.writeField(elements.element[25])
             csvWriter?.writeField(elements.element[26])
             csvWriter?.writeField(elements.element[27])
-            //csvWriter?.writeField(elements.element[28])
-            //csvWriter?.writeField(elements.element[29])
-            
-            
+            csvWriter?.writeField(elements.element[28])
             csvWriter?.finishLine()
         }
         csvWriter?.closeStream()

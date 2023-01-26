@@ -2,8 +2,9 @@
 //  PhotoSelector.swift
 //  ProjectIMT
 //
-//  Created by Maël Trouillet on 06/01/2022.
+//  Created by facetoface on 06/01/2022.
 //
+// This view shows the picture on the transformation lines and allows to take after and before picture.
 
 import SwiftUI
 import UIKit

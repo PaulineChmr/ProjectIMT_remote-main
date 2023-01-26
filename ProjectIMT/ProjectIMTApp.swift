@@ -2,7 +2,7 @@
 //  ProjectIMTApp.swift
 //  ProjectIMT
 //
-//  Created by Maël Trouillet on 05/01/2022.
+//  Created by facetoface on 05/01/2022.
 //
 
 import SwiftUI
@@ -10,8 +10,6 @@ import SwiftUI
 @main
 struct ProjectIMTApp: App {
     let persistenceContainer = PersistenceController.shared
-    
-    //@StateObject var customersListManager = CustomersListManager()
     
     var body: some Scene {
         WindowGroup {
