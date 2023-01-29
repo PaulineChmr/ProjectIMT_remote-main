@@ -9,13 +9,7 @@
 import SwiftUI
 import UIKit
 
-/*
- We use :
-    - UIImagePickerView() to select photos from the galery, because it is convenient and pre-build
-    - we could have used UIImagePickerView() to take photos with the camera too, but since we need more customization, we will use AVFoundation instead.
- 
-Both these solutions are UIKit View, hence the use of a ControllerRepresentable and a ViewCoordinator to implement them inside a SwiftUI view.
-*/
+
 
 struct ImagePicker: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -52,24 +46,20 @@ struct ImagePicker: View {
 
     func find(cote: String) -> Image {
         let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
-        
-        if(cote == "right") {
-            guard let path_after = manager.getPathForImage(name: "after"),
-                  FileManager.default.fileExists(atPath: path_after.path)
-            else{
-                return Image(systemName: "photo.fill")
-            }
-            return Image(uiImage: manager.getImage(name: "after")!)
+        var name : String
+        if (cote == "right") {
+            name = "after"
         }
-        
+        else {
+            name = "before"
+        }
+            
+        guard let path = manager.getPathForImage(name: name),
+              FileManager.default.fileExists(atPath: path.path)
         else{
-            guard let path_before = manager.getPathForImage(name: "before"),
-                  FileManager.default.fileExists(atPath: path_before.path)
-            else{
-                return Image(systemName: "photo.fill")
-            }
-            return Image(uiImage: manager.getImage(name: "before")!)
+            return Image(systemName: "photo.fill")
         }
+        return Image(uiImage: manager.getImage(name: name)!)
     }
 }
 

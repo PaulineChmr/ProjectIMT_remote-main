@@ -425,7 +425,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProjectIMT/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Face2Face;
+				INFOPLIST_KEY_CFBundleDisplayName = Facetoface;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Les photos seront enregistrées dans vos documents";
@@ -463,7 +463,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProjectIMT/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Face2Face;
+				INFOPLIST_KEY_CFBundleDisplayName = Facetoface;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Les photos seront enregistrées dans vos documents";

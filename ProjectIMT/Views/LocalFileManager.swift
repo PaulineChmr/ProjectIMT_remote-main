@@ -37,22 +37,6 @@ class LocalFileManager {
         print(path)
     }
     
-    /*func saveImage_gallery(image: UIImage, name: String){
-        guard let data = image.jpegData(compressionQuality: 1.0),
-              let path = getPathForImageGallery(name: name) else{
-            print("Error getting data.")
-            return
-        }
-        
-        do {
-            try data.write(to: path)
-            print("Save succeeded")
-        } catch let error {
-            print("Error saving. \(error)")
-        }
-        print(path)
-    }*/
-    
     func getImage(name: String) -> UIImage? {
         guard let path = getPathForImage(name: name)?.path,
               FileManager.default.fileExists(atPath: path) else{
@@ -89,21 +73,6 @@ class LocalFileManager {
         }
         return path
     }
-    
-    /*func getPathForImageGallery(name: String) -> URL?{
-        guard let cust_id = self.customer2.id,
-              let transfo_id = self.transformation2.id,
-            let path = FileManager
-            .default
-            .urls(for: .documentDirectory, in: .userDomainMask)
-            .first?
-            .appendingPathComponent("\(cust_id.uuidString)\(transfo_id.uuidString)\(name).jpg")
-        else{
-            print("Error getting path")
-            return nil
-        }
-        return path
-    }*/
 }
 
 // Sauvegarde dans la galerie

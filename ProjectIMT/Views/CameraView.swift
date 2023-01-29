@@ -49,8 +49,9 @@ struct CameraViewWithModel: View {
             
             
             // Face positionment layer
-            // Améliorer la condition du 1er if pour inclure le cas où le fichier jpeg aurait été supprimé manuellement
             let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
+            
+            // Améliorer la condition pour inclure le cas où le fichier jpeg aurait été supprimé manuellement
             if transformation2.before_picture != "" {
                 if !camera.isTaken {
                     Image(uiImage: manager.getImage(name: "before")!)

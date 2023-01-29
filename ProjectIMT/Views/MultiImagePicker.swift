@@ -8,13 +8,7 @@
 import SwiftUI
 import UIKit
 
-/*
- We use :
-    - UIImagePickerView() to select photos from the galery, because it is convenient and pre-build
-    - we could have used UIImagePickerView() to take photos with the camera too, but since we need more customization, we will use AVFoundation instead.
- 
-Both these solutions are UIKit View, hence the use of a ControllerRepresentable and a ViewCoordinator to implement them inside a SwiftUI view.
-*/
+
 
 struct MultiImagePicker: View {
     @Environment(\.managedObjectContext) private var viewContext

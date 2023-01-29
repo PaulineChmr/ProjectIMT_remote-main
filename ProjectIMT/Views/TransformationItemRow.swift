@@ -31,7 +31,7 @@ struct TransformationItemRow: View {
 
         
         HStack {
-
+            //ImagePicker left
             ImagePicker(transformation2: $transformation2, customer2: customer2, cote: "left")
             .padding(.horizontal)
             
@@ -43,7 +43,7 @@ struct TransformationItemRow: View {
                         .lineLimit(1)
                 }
                 
-                //show transformation button
+                //ShowTransformation button
                 Button(action: openTransformation ) { label:  do {
                     HStack {
                         
@@ -69,11 +69,14 @@ struct TransformationItemRow: View {
                 }
             }
             
+            //ImagePicker right
             ImagePicker(transformation2: $transformation2, customer2: customer2, cote: "right")
             .padding(.horizontal)
             .disabled(transformation2.before_picture == "")
             
         }
+        
+        //ShowMuscleSheet button
         Button(action: {showMusclesSheet = true} ) {
             Image(systemName: "list.bullet").foregroundColor(Color.yellow)
         } .sheet(isPresented: $showMusclesSheet) {
