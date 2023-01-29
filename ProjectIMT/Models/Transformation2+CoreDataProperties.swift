@@ -2,7 +2,7 @@
 //  Transformation2+CoreDataProperties.swift
 //  ProjectIMT
 //
-//  Created by facetoface on 23/01/2023.
+//  Created by facetoface on 26/01/2023.
 //
 //
 
@@ -47,6 +47,30 @@ extension Transformation2 {
     @NSManaged public var rlsan_paralyse: Double
     @NSManaged public var rlsan_sain: Double
     @NSManaged public var customer: Customer2?
+    @NSManaged public var photo_list: NSSet?
+
+    public var photoArray: [AdditionalPhoto2]{
+        let set = photo_list as? Set<AdditionalPhoto2> ?? []
+        return set.sorted{
+            $0.number  < $1.number
+        }
+    }
+}
+
+// MARK: Generated accessors for photo_list
+extension Transformation2 {
+
+    @objc(addPhoto_listObject:)
+    @NSManaged public func addToPhoto_list(_ value: AdditionalPhoto2)
+
+    @objc(removePhoto_listObject:)
+    @NSManaged public func removeFromPhoto_list(_ value: AdditionalPhoto2)
+
+    @objc(addPhoto_list:)
+    @NSManaged public func addToPhoto_list(_ values: NSSet)
+
+    @objc(removePhoto_list:)
+    @NSManaged public func removeFromPhoto_list(_ values: NSSet)
 
 }
 

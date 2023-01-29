@@ -1,10 +1,9 @@
 //
-//  CameraView.swift
+//  MultCameraView.swift
 //  ProjectIMT
 //
-//  Created by facetoface on 18/01/2022.
+//  Created by facetoface on 26/01/2023.
 //
-// This view allows to take before and after pictures.
 
 import SwiftUI
 import AVFoundation
@@ -12,27 +11,29 @@ import CoreData
 import UIKit
 import Foundation
 
-struct CameraView: View {
+struct MultCameraView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State var captured_image: UIImage?
     //@Binding var date: Date?
-    @Binding var transformation2: Transformation2
+    @Binding var additionalPhoto2: AdditionalPhoto2
+    var transformation2: Transformation2
     var customer2 : Customer2
     
 
     var body: some View {
-        CameraViewWithModel(captured_image: $captured_image, camera: CameraModel(captured_image: $captured_image, transformation2: transformation2), transformation2: transformation2, customer2: customer2)
+        MultCameraViewWithModel(captured_image: $captured_image, camera: MultCameraModel(captured_image: $captured_image, additionalPhoto2: additionalPhoto2), additionalPhoto2: additionalPhoto2, transformation2: transformation2, customer2: customer2)
     }
 }
 
-struct CameraViewWithModel: View {
+struct MultCameraViewWithModel: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Binding var captured_image: UIImage?
     
     //@Binding var before_picture: UIImage?
     
-    @StateObject var camera : CameraModel
+    @StateObject var camera : MultCameraModel
+    var additionalPhoto2: AdditionalPhoto2
     var transformation2 : Transformation2
     var customer2 : Customer2
 
@@ -44,14 +45,14 @@ struct CameraViewWithModel: View {
         ZStack {
             
             // Camera preview
-            CameraPreview(camera: camera)
+            MultCameraPreview(camera: camera)
                 .ignoresSafeArea(.all, edges: .all)
             
             
             // Face positionment layer
             // Améliorer la condition du 1er if pour inclure le cas où le fichier jpeg aurait été supprimé manuellement
-            let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
-            if transformation2.before_picture != "" {
+            let manager = MultLocalFileManager(customer2: customer2, transformation2: transformation2, additionalPhoto2: additionalPhoto2)
+            if additionalPhoto2.before_picture != "" {
                 if !camera.isTaken {
                     Image(uiImage: manager.getImage(name: "before")!)
                         .resizable()
@@ -140,20 +141,21 @@ struct CameraViewWithModel: View {
     
 
     func savePic() {
-        let manager = LocalFileManager(customer2: customer2, transformation2: transformation2)
+        let manager = MultLocalFileManager(customer2: customer2, transformation2: transformation2, additionalPhoto2: additionalPhoto2)
         let imageSaver = ImageSaver()
         
-        if transformation2.before_picture != "" {
-            transformation2.after_date = Date()
+        if additionalPhoto2.before_picture != "" {
+            additionalPhoto2.after_date = Date()
             manager.saveimage(image: captured_image!, name: "after")
             //manager.saveimage_gallery(image: captured_image!, name: "after")
-            transformation2.after_picture = manager.getPathForImage(name: "after")!.path
+            print(String(manager.getPathForImage(name: "after")!.path))
+            additionalPhoto2.after_picture = manager.getPathForImage(name: "after")!.path
         }
         else {
-            transformation2.before_date = Date()
+            additionalPhoto2.before_date = Date()
             manager.saveimage(image: captured_image!, name: "before")
             //manager.saveimage_gallery(image: captured_image!, name: "before")
-            transformation2.before_picture = manager.getPathForImage(name: "before")!.path
+            additionalPhoto2.before_picture = manager.getPathForImage(name: "before")!.path
         }
         imageSaver.writeToPhotoAlbum(image: captured_image!)
         saveContext()
@@ -173,7 +175,7 @@ struct CameraViewWithModel: View {
 
 // Camera Model ...
 
-class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
+class MultCameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(entity: Transformation2.entity(), sortDescriptors: [NSSortDescriptor(key: "id", ascending: true)])
     var transformations2: FetchedResults<Transformation2>
@@ -190,13 +192,13 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     
     //Pic data
     @Binding var captured_image: UIImage?
-    var transformation2 : Transformation2
+    var additionalPhoto2 : AdditionalPhoto2
     
     
     
-    init(captured_image: Binding<UIImage?>, transformation2: Transformation2) {
+    init(captured_image: Binding<UIImage?>, additionalPhoto2: AdditionalPhoto2) {
         self._captured_image = captured_image
-        self.transformation2 = transformation2
+        self.additionalPhoto2 = additionalPhoto2
     }
     
     func check() {
@@ -332,9 +334,9 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
 }
 
 // setting view preview ...
-struct CameraPreview: UIViewRepresentable {
+struct MultCameraPreview: UIViewRepresentable {
 
-    @ObservedObject var camera: CameraModel
+    @ObservedObject var camera: MultCameraModel
 
     func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: UIScreen.main.bounds)

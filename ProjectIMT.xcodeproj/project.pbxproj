@@ -20,13 +20,20 @@
 		E178AF13296874CB00C517AF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178AF12296874CB00C517AF /* Persistence.swift */; };
 		E1A04D922981517500B5EB43 /* Customer2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04D902981517500B5EB43 /* Customer2+CoreDataClass.swift */; };
 		E1A04D932981517500B5EB43 /* Customer2+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04D912981517500B5EB43 /* Customer2+CoreDataProperties.swift */; };
+		E1A04D982983207F00B5EB43 /* Transformation2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04D942983207F00B5EB43 /* Transformation2+CoreDataClass.swift */; };
+		E1A04D992983207F00B5EB43 /* Transformation2+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04D952983207F00B5EB43 /* Transformation2+CoreDataProperties.swift */; };
+		E1A04D9D298320E800B5EB43 /* PhotoItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04D9C298320E800B5EB43 /* PhotoItemRow.swift */; };
+		E1A04DA0298323A400B5EB43 /* AdditionalPhoto2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04D9E298323A400B5EB43 /* AdditionalPhoto2+CoreDataClass.swift */; };
+		E1A04DA1298323A400B5EB43 /* AdditionalPhoto2+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04D9F298323A400B5EB43 /* AdditionalPhoto2+CoreDataProperties.swift */; };
+		E1A04DA3298324DE00B5EB43 /* MultiImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04DA2298324DE00B5EB43 /* MultiImagePicker.swift */; };
+		E1A04DA52983262C00B5EB43 /* ShowMultTransformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04DA42983262C00B5EB43 /* ShowMultTransformationView.swift */; };
+		E1A04DA7298326FA00B5EB43 /* MultLocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04DA6298326FA00B5EB43 /* MultLocalFileManager.swift */; };
+		E1A04DA929833C7800B5EB43 /* MultCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A04DA829833C7800B5EB43 /* MultCameraView.swift */; };
 		E1A2B564296E0F8C0042ED2C /* EditCustomerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B563296E0F8C0042ED2C /* EditCustomerSheet.swift */; };
 		E1A4007E297D8525005AC47B /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4007D297D8525005AC47B /* LocalFileManager.swift */; };
 		E1A77EED296CF797000E6FA9 /* CustomerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A77EEC296CF797000E6FA9 /* CustomerListView.swift */; };
 		E1A77EF5296DC8FD000E6FA9 /* AddCustomerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A77EF4296DC8FD000E6FA9 /* AddCustomerSheet.swift */; };
 		E1AC5D3E29742FEF00902ED5 /* AddTransformationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC5D3D29742FEF00902ED5 /* AddTransformationSheet.swift */; };
-		E1B7F48F297EC6C600CAD2BA /* Transformation2+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B7F48D297EC6C600CAD2BA /* Transformation2+CoreDataClass.swift */; };
-		E1B7F490297EC6C600CAD2BA /* Transformation2+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B7F48E297EC6C600CAD2BA /* Transformation2+CoreDataProperties.swift */; };
 		E1B7F492297ECA5000CAD2BA /* AddMusclesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B7F491297ECA5000CAD2BA /* AddMusclesSheet.swift */; };
 		E1B7F497297F2D0300CAD2BA /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B7F496297F2D0300CAD2BA /* CHCSVParser.m */; };
 		E1B7F49A297F2E6A00CAD2BA /* GenerateCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B7F499297F2E6A00CAD2BA /* GenerateCSV.swift */; };
@@ -47,14 +54,21 @@
 		E178AF12296874CB00C517AF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E1A04D902981517500B5EB43 /* Customer2+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Customer2+CoreDataClass.swift"; path = "../../Customer2+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E1A04D912981517500B5EB43 /* Customer2+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Customer2+CoreDataProperties.swift"; path = "../../Customer2+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E1A04D942983207F00B5EB43 /* Transformation2+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transformation2+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E1A04D952983207F00B5EB43 /* Transformation2+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transformation2+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E1A04D9C298320E800B5EB43 /* PhotoItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoItemRow.swift; sourceTree = "<group>"; };
+		E1A04D9E298323A400B5EB43 /* AdditionalPhoto2+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdditionalPhoto2+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E1A04D9F298323A400B5EB43 /* AdditionalPhoto2+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdditionalPhoto2+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E1A04DA2298324DE00B5EB43 /* MultiImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiImagePicker.swift; sourceTree = "<group>"; };
+		E1A04DA42983262C00B5EB43 /* ShowMultTransformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMultTransformationView.swift; sourceTree = "<group>"; };
+		E1A04DA6298326FA00B5EB43 /* MultLocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultLocalFileManager.swift; sourceTree = "<group>"; };
+		E1A04DA829833C7800B5EB43 /* MultCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultCameraView.swift; sourceTree = "<group>"; };
 		E1A2B563296E0F8C0042ED2C /* EditCustomerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomerSheet.swift; sourceTree = "<group>"; };
 		E1A4007C297CC06F005AC47B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E1A4007D297D8525005AC47B /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		E1A77EEC296CF797000E6FA9 /* CustomerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerListView.swift; sourceTree = "<group>"; };
 		E1A77EF4296DC8FD000E6FA9 /* AddCustomerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomerSheet.swift; sourceTree = "<group>"; };
 		E1AC5D3D29742FEF00902ED5 /* AddTransformationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddTransformationSheet.swift; path = CustomersList/AddTransformationSheet.swift; sourceTree = "<group>"; };
-		E1B7F48D297EC6C600CAD2BA /* Transformation2+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transformation2+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E1B7F48E297EC6C600CAD2BA /* Transformation2+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transformation2+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E1B7F491297ECA5000CAD2BA /* AddMusclesSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMusclesSheet.swift; sourceTree = "<group>"; };
 		E1B7F495297F2D0300CAD2BA /* ProjectIMT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjectIMT-Bridging-Header.h"; sourceTree = "<group>"; };
 		E1B7F496297F2D0300CAD2BA /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
@@ -85,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				663C0E30278B694D006576F0 /* TextFieldAlert.swift */,
-				E1B7F495297F2D0300CAD2BA /* ProjectIMT-Bridging-Header.h */,
 			);
 			path = Utilitaries;
 			sourceTree = "<group>";
@@ -93,10 +106,12 @@
 		6644407D2788693300E451F6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E1A04D9E298323A400B5EB43 /* AdditionalPhoto2+CoreDataClass.swift */,
+				E1A04D9F298323A400B5EB43 /* AdditionalPhoto2+CoreDataProperties.swift */,
+				E1A04D942983207F00B5EB43 /* Transformation2+CoreDataClass.swift */,
+				E1A04D952983207F00B5EB43 /* Transformation2+CoreDataProperties.swift */,
 				E1A04D902981517500B5EB43 /* Customer2+CoreDataClass.swift */,
 				E1A04D912981517500B5EB43 /* Customer2+CoreDataProperties.swift */,
-				E1B7F48D297EC6C600CAD2BA /* Transformation2+CoreDataClass.swift */,
-				E1B7F48E297EC6C600CAD2BA /* Transformation2+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -107,9 +122,14 @@
 				662D7D852799900D00729A7E /* CustomersList */,
 				E1A77EF4296DC8FD000E6FA9 /* AddCustomerSheet.swift */,
 				E1B7F499297F2E6A00CAD2BA /* GenerateCSV.swift */,
+				E1A04DA42983262C00B5EB43 /* ShowMultTransformationView.swift */,
+				E1A04DA2298324DE00B5EB43 /* MultiImagePicker.swift */,
 				E1AC5D3D29742FEF00902ED5 /* AddTransformationSheet.swift */,
 				E1B7F491297ECA5000CAD2BA /* AddMusclesSheet.swift */,
+				E1A04DA6298326FA00B5EB43 /* MultLocalFileManager.swift */,
 				E1A2B563296E0F8C0042ED2C /* EditCustomerSheet.swift */,
+				E1A04DA829833C7800B5EB43 /* MultCameraView.swift */,
+				E1A04D9C298320E800B5EB43 /* PhotoItemRow.swift */,
 				668F40EB2785FA7B00C35379 /* TransformationItemRow.swift */,
 				6644407727877E9700E451F6 /* ImagePicker.swift */,
 				6628E95B279632FD00C83519 /* CameraView.swift */,
@@ -138,6 +158,7 @@
 		668F40D22785D1A000C35379 /* ProjectIMT */ = {
 			isa = PBXGroup;
 			children = (
+				E1B7F495297F2D0300CAD2BA /* ProjectIMT-Bridging-Header.h */,
 				E1B7F494297F2CCB00CAD2BA /* CSV */,
 				E1A4007C297CC06F005AC47B /* Info.plist */,
 				E178AF0F2968716600C517AF /* ProjectIMT.xcdatamodeld */,
@@ -244,18 +265,25 @@
 				668F40E22785D4EC00C35379 /* MainView.swift in Sources */,
 				E1A04D932981517500B5EB43 /* Customer2+CoreDataProperties.swift in Sources */,
 				668F40EC2785FA7B00C35379 /* TransformationItemRow.swift in Sources */,
-				E1B7F48F297EC6C600CAD2BA /* Transformation2+CoreDataClass.swift in Sources */,
+				E1A04DA0298323A400B5EB43 /* AdditionalPhoto2+CoreDataClass.swift in Sources */,
+				E1A04D992983207F00B5EB43 /* Transformation2+CoreDataProperties.swift in Sources */,
 				E1A04D922981517500B5EB43 /* Customer2+CoreDataClass.swift in Sources */,
+				E1A04D9D298320E800B5EB43 /* PhotoItemRow.swift in Sources */,
 				E1A77EF5296DC8FD000E6FA9 /* AddCustomerSheet.swift in Sources */,
 				E1AC5D3E29742FEF00902ED5 /* AddTransformationSheet.swift in Sources */,
 				663C0E31278B694D006576F0 /* TextFieldAlert.swift in Sources */,
+				E1A04DA3298324DE00B5EB43 /* MultiImagePicker.swift in Sources */,
 				E1B7F492297ECA5000CAD2BA /* AddMusclesSheet.swift in Sources */,
 				E1B7F497297F2D0300CAD2BA /* CHCSVParser.m in Sources */,
+				E1A04DA1298323A400B5EB43 /* AdditionalPhoto2+CoreDataProperties.swift in Sources */,
 				E1B7F49A297F2E6A00CAD2BA /* GenerateCSV.swift in Sources */,
+				E1A04D982983207F00B5EB43 /* Transformation2+CoreDataClass.swift in Sources */,
+				E1A04DA52983262C00B5EB43 /* ShowMultTransformationView.swift in Sources */,
 				6628E95C279632FD00C83519 /* CameraView.swift in Sources */,
 				E1A2B564296E0F8C0042ED2C /* EditCustomerSheet.swift in Sources */,
+				E1A04DA7298326FA00B5EB43 /* MultLocalFileManager.swift in Sources */,
 				E178AF112968716600C517AF /* ProjectIMT.xcdatamodeld in Sources */,
-				E1B7F490297EC6C600CAD2BA /* Transformation2+CoreDataProperties.swift in Sources */,
+				E1A04DA929833C7800B5EB43 /* MultCameraView.swift in Sources */,
 				E1A4007E297D8525005AC47B /* LocalFileManager.swift in Sources */,
 				E178AF13296874CB00C517AF /* Persistence.swift in Sources */,
 				88FBF845279710D4007377E9 /* ShowTransformationView.swift in Sources */,
@@ -397,10 +425,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProjectIMT/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Face2Face;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Les photos seront enregistrées dans vos documents";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save your photo ";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Les photos seront enregistrées dans votre galerie";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -434,10 +463,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProjectIMT/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Face2Face;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Les photos seront enregistrées dans vos documents";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save your photo ";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Les photos seront enregistrées dans votre galerie";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

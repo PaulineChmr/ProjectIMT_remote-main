@@ -1,25 +1,24 @@
 //
-//  TransformationItem.swift
+//  PhotoItemRow.swift
 //  ProjectIMT
 //
-//  Created by facetoface on 05/01/2022.
+//  Created by facetoface on 26/01/2023.
 //
-// The view who shows the line of each transformattion.
 
 import SwiftUI
 
-struct TransformationItemRow: View {
+struct PhotoItemRow: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @Binding var transformation2: Transformation2
+    @Binding var additionalPhoto2: AdditionalPhoto2
     @State var transformationSheetIsPresented: Bool = false
     @State var cantOpenTransformationAlertIsPresented: Bool = false
-    @State var showMusclesSheet: Bool = false
     var customer2 : Customer2
+    var transformation2: Transformation2
     
     //used in the View to display different situations
     var bothImagesTaken : Bool {
-        if (transformation2.before_picture != "" && transformation2.after_picture != "") {
+        if (additionalPhoto2.before_picture != "" && additionalPhoto2.after_picture != "") {
             return true
         }
         return false
@@ -28,32 +27,25 @@ struct TransformationItemRow: View {
     
     //MARK: VIEW
     var body: some View {
-
         
         HStack {
 
-            ImagePicker(transformation2: $transformation2, customer2: customer2, cote: "left")
+            MultiImagePicker(additionalPhoto2: $additionalPhoto2, transformation2: transformation2, customer2: customer2, cote: "left")
             .padding(.horizontal)
             
             VStack(spacing: 4) {
-                //transformation name
-                if let name = transformation2.name {
-                    Text(name)
-                        .font(.headline)
-                        .lineLimit(1)
-                }
                 
                 //show transformation button
                 Button(action: openTransformation ) { label:  do {
                     HStack {
                         
-                        DateIfPicturePresent(path: transformation2.before_picture, date: transformation2.before_date)
+                        DateIfPicturePresent(path: additionalPhoto2.before_picture, date: additionalPhoto2.before_date)
                         
                         Image(systemName: "arrowshape.turn.up.right.fill")
                             .foregroundColor(Color.white)
                             .font(.system(size: 15.0))
                         
-                        DateIfPicturePresent(path: transformation2.after_picture, date: transformation2.after_date)
+                        DateIfPicturePresent(path: additionalPhoto2.after_picture, date: additionalPhoto2.after_date)
                     }
                 }}
                 .frame(maxWidth: .infinity)
@@ -65,19 +57,14 @@ struct TransformationItemRow: View {
                     Button("OK", role: .cancel) { }
                 }
                 .sheet(isPresented: $transformationSheetIsPresented) {
-                    ShowTransformationView(customer2: customer2, transformation2: transformation2)
+                    ShowMultTransformationView(customer2: customer2, transformation2: transformation2, additionalPhoto2: additionalPhoto2)
                 }
             }
             
-            ImagePicker(transformation2: $transformation2, customer2: customer2, cote: "right")
+            MultiImagePicker(additionalPhoto2: $additionalPhoto2, transformation2: transformation2, customer2: customer2, cote: "right")
             .padding(.horizontal)
-            .disabled(transformation2.before_picture == "")
+            .disabled(additionalPhoto2.before_picture == "")
             
-        }
-        Button(action: {showMusclesSheet = true} ) {
-            Image(systemName: "list.bullet").foregroundColor(Color.yellow)
-        } .sheet(isPresented: $showMusclesSheet) {
-            AddMusclesSheet(showMusclesSheet: $showMusclesSheet, transformation2: transformation2)
         }
     }
     
@@ -105,34 +92,3 @@ struct TransformationItemRow: View {
         
     }
 }
-
-//MARK: UTILITARIES
-extension Formatter {
-    static let jourEtMois: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("MM/dd")
-        return dateFormatter
-    }()
-}
-
-extension Date {
-    var jourEtMois: String { Formatter.jourEtMois.string(from: self) }
-}
-
-/*
-#if DEBUG
-struct TransformationItemRow_Previews: PreviewProvider {
-  static var previews: some View {
-    PreviewWrapper()
-  }
-
-  struct PreviewWrapper: View {
-      @State var transformation = Transformation(name: "lifting")
-
-    var body: some View {
-      TransformationItemRow(transformation: $transformation)
-    }
-  }
-}
-#endif
- */
