@@ -12,12 +12,12 @@ Il est obligatoire de fournir au moins le prénom lors de l'initialisation d'une
 Une Transformation a un identifiant unique, un nom, une photo et une date d'avant et d'après transformation, et une dose de produit injecté sur un endroit du visage avant et après transformation. Il est important de préciser que les photos sont enregistrées directement dans les fichiers du téléphone, les attributs before_picture et after_picture n'enregistrent donc que le chemin permettant d'y accéder. Les transformations ont également un tableau d'Additional Photo (défini dans la partie relationships de la classe), afin d'enregistrer des expressions faciales différentes pour une même transformation.
 Une transformation peut être initialisée avec tous ses champs vides.  
 
-* **Additional Photo**
+* **Additional Photo**  
 Une Additional Photo a un identifiant unique, une photo et une date d'avant et d'après transformation, et un nombre indiquant sa position dans la liste d'Additional Photo de la Transformation mère. 
 
-* **Persistance des données**
-Ces trois classes sont générées par le framework Core Data. Celui-ci permet également de gérer les relations entre les deux classes, mais il permet surtout de stocker les données de l'application. Il utilise pour cela :
-Un contexte de données (on le retrouve souvent comme attribut nommé viewContext) afin de les sauvegarder ou de les récupérer depuis la persistance des données.
+* **Persistance des données**  
+Ces trois classes sont générées par le framework Core Data. Celui-ci permet également de gérer les relations entre les deux classes, mais il permet surtout de stocker les données de l'application. Il utilise pour cela :  
+Un contexte de données (on le retrouve souvent comme attribut nommé viewContext) afin de les sauvegarder ou de les récupérer depuis la persistance des données.  
 Un magasin de données qui gère la persistance des données (fichier Persistence.swift).
 Ainsi, lorsque l'on modifie la valeur d'un des attributs des classes générées par Core Data, il est nécessaire de faire appel à la fonction viewContext.save(), et lorsque l'on souhaite supprimer une instance de ces classes, on applique la fonction viewContext.delete(element). 
 
@@ -65,24 +65,24 @@ Un slider permet de passer d'une photo à l'autre en "fondu" en modifiant linéa
 * **TextFieldAlert**  
 Alerte custom affichant une zone de saisie de text, chose impossible avec une alerte classique.
 
-* **PhotoItemRow**
+* **PhotoItemRow**  
 Similaire au fichier TransformationItemRow, mais on modifie les attributs d'une Additional Photo au lieu d'une Transformation.
 
-* **MultiImagePicker**
+* **MultiImagePicker**  
 Similaire au fichier TransformationItemRow, mais on modifie les attributs d'une Additional Photo au lieu d'une Transformation.
 
-* **MultCameraView**
+* **MultCameraView**  
 Similaire au fichier TransformationItemRow, mais on modifie les attributs d'une Additional Photo au lieu d'une Transformation.
 
-* **MultLocalFileManager**
+* **MultLocalFileManager**  
 Similaire au fichier TransformationItemRow, mais on modifie les attributs d'une Additional Photo au lieu d'une Transformation.
 
 
 
 ## AXES D'AMÉLIORATION
 
-* **Suppression manuelle des fichiers**
+* **Suppression manuelle des fichiers**  
 L'application ne prend pas en compte la possibilité que l'utilisateur supprime manuellement les fichiers photo enregistrés dans ses dossiers. Dans ce cas, elle considère que les fichiers existent et risque de crash si l'on cherche à afficher la photo. Il faudrait donc ajouter une condition pour inclure ce cas.
 
-* **Ergonomie de la view AddMuscleSheet**
+* **Ergonomie de la view AddMuscleSheet**  
 Afficher une image d'un visage afin que l'utilisateur clique sur les zones d'injection, puis choisisse la dose de produit injectée.
